@@ -1,48 +1,69 @@
 /*
-JingDong daily bonus, Multiple in one scripts
+京东多合一签到脚本
 
-Description :
-When using for the first time. Need to manually log in to the https://bean.m.jd.com checkin to get cookie. If notification gets cookie success, you can use the check in script.
-Due to the validity of cookie, if the script pops up a notification of cookie invalidation in the future, you need to repeat the above steps.
+更新于: 2020.3.2 0:05 v75
+有效接口: 21
 
-Daily bonus script will be performed every day at 0:05 a.m. You can modify the execution time.
-If reprinted, please indicate the source. My TG channel @NobyDa
+该脚本同时兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+如使用JSBox 或 Nodejs, 请自行抓取Cookie填入脚本Key处.
 
-Update 2020.2.13 21:00 v66 
-Effective number: 22
+JSbox, Node.js 抓取Cookie 说明:
+
+开启抓包app后, Safari浏览器登录 https://bean.m.jd.com 点击签到并且出现签到日历后, 返回抓包app搜索关键字 functionId=signBean 复制请求头Cookie填入脚本即可. 
+注: 如果复制的Cookie开头为"Cookie: "请把它删除后填入
+
 ~~~~~~~~~~~~~~~~
-Surge 4.0 :
+Quantumult X, Surge, Loon 说明：
+
+初次使用时, 打开Safari浏览器登录 https://bean.m.jd.com 点击签到获取cookie, 请注意, 仅可网页获取!!!
+如果通知获得cookie成功, 则可以使用此签到脚本。
+由于cookie的有效性(经测试网页Cookie有效周期最长31天)，如果脚本将来弹出cookie无效的通知，则需要重复上述步骤。
+
+签到脚本将在每天的凌晨0:05执行。您可以修改执行时间, 因部分接口京豆限量领取, 建议调整为凌晨签到.
+注: 京东金融游戏大厅接口因京东服务器负载问题可能无法签到, 可调整签到时间避免签到人数过多导致失败.
+
+问题反馈: @NobyDa_bot
+TG频道: @NobyDa
+
+如果转载, 请注明出处.
+~~~~~~~~~~~~~~~~
+
+Surge 4.0 或 Loon 2.1+ :
+
 [Script]
+# 京东多合一签到
 cron "5 0 * * *" script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
 
-# Get JingDong cookie.
-http-request https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean(Index|GroupStageIndex) max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
+# 获取京东Cookie.
+http-request https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
+
 ~~~~~~~~~~~~~~~~
-QX 1.0.5 :
+
+QX 1.0.5+ :
+
 [task_local]
+# 京东多合一签到
 5 0 * * * JD_DailyBonus.js
 
 [rewrite_local]
-# Get JingDong cookie. QX 1.0.5(188+):
-https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean(Index|GroupStageIndex) url script-request-header JD_DailyBonus.js
+# 获取京东Cookie. 
+# 注意此为本地路径, 请根据实际情况自行调整.
+https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean url script-request-header JD_DailyBonus.js
+
 ~~~~~~~~~~~~~~~~
-QX or Surge MITM = api.m.jd.com
+QX 或 Surge 或 Loon MITM = api.m.jd.com
 ~~~~~~~~~~~~~~~~
 */
 
 var log = true; //是否开启日志, false则关闭
 var stop = 0; //自定义延迟签到,单位毫秒,(如填200则每个接口延迟0.2秒执行),默认无延迟
 var $nobyda = nobyda();
-var KEY = $nobyda.read("CookieJD");
 
-if ($nobyda.isRequest) {
-  GetCookie()
-  $nobyda.end()
-} else {
-  all()
-  $nobyda.end()
-}
+//  填此处↓↓↓
+var Key = ''; //如果使用JSBox或Node.js, 此处自行抓包填写您的Cookie.
+//  填此处↑↑↑
 
+var KEY = Key?Key:$nobyda.read("CookieJD")
 async function all() {//签到模块相互独立,您可注释某一行以禁用某个接口.
   await JingDongBean(stop); //京东京豆
   await JingRongBean(stop); //金融京豆
@@ -59,7 +80,7 @@ async function all() {//签到模块相互独立,您可注释某一行以禁用�
   await JingDongWomen(stop); //京东女装馆
   await JingDongCash(stop); //京东现金红包
   await JingDongShoes(stop); //京东鞋靴馆
-  await JingRSeeAds(stop); //金融看广告
+  //await JingRSeeAds(stop); //金融看广告
   await JingRongGame(stop); //金融游戏大厅
   await JingDongLive(stop); //京东智能生活馆
   await JingDongClean(stop); //京东清洁馆
@@ -98,6 +119,14 @@ var merge = {
   JDShake: {success:0,fail:0,bean:0,steel:0,notify:'',Qbear:0}
 }
 
+if ($nobyda.isRequest) {
+  GetCookie()
+  $nobyda.done()
+} else {
+  all()
+  $nobyda.done()
+}
+
 function notify() {
 
   return new Promise(resolve => {
@@ -126,6 +155,7 @@ function notify() {
       var two = "【签到总计】:  " + Tbean + TSteel + TCash + Tbsc
       var three = "【账号总计】:  " + beans + Steel + Cash + bsc
       var four = "【左滑 '查看' 以显示签到详情】\n"
+      if (log) console.log("\n" + one + two + three + four + notify)
       $nobyda.notify("", "", one + two + three + four + notify);
       resolve('done')
     } catch (eor) {
@@ -141,7 +171,7 @@ function JingDongBean(s) {
     const JDBUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=signBeanIndex&appid=ld',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       }
     };
 
@@ -213,15 +243,15 @@ function JingDongTurn(s) {
     const JDTUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=lotteryDraw&body=%7B%22actId%22%3A%22jgpqtzjhvaoym%22%2C%22appSource%22%3A%22jdhome%22%2C%22lotteryCode%22%3A%224wwzdq7wkqx2usx4g5i2nu5ho4auto4qxylblkxacm7jqdsltsepmgpn3b2hgyd7hiawzpccizuck%22%7D&appid=ld',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       }
     };
 
     $nobyda.get(JDTUrl, function(error, response, data) {
       try {
         if (error) {
-          merge.JDTurn.notify = "京东商城-转盘: 签到接口请求失败 ‼️‼️"
-          merge.JDTurn.fail = 1
+          merge.JDTurn.notify += merge.JDTurn.notify ? "\n京东商城-转盘: 签到接口请求失败 ‼️‼️ (多次)" : "京东商城-转盘: 签到接口请求失败 ‼️‼️"
+          merge.JDTurn.fail += 1
         } else {
           const cc = JSON.parse(data)
           if (cc.code == 3) {
@@ -235,18 +265,24 @@ function JingDongTurn(s) {
             } else {
               if (data.match(/(京豆|\"910582\")/)) {
                 if (log) console.log("京东商城-转盘签到成功response: \n" + data)
-                merge.JDTurn.notify = "京东商城-转盘: 成功, 明细: " + cc.data.prizeSendNumber + "京豆 🐶"
-                merge.JDTurn.success = 1
-                merge.JDTurn.bean = cc.data.prizeSendNumber
+                merge.JDTurn.notify += merge.JDTurn.notify ? "\n京东商城-转盘: 成功, 明细: " + cc.data.prizeSendNumber + "京豆 🐶 (多次)" : "京东商城-转盘: 成功, 明细: " + cc.data.prizeSendNumber + "京豆 🐶"
+                merge.JDTurn.success += 1
+                merge.JDTurn.bean += Number(cc.data.prizeSendNumber)
+                if (cc.data.chances != "0") {
+                  setTimeout(() => {
+                    JingDongTurn(s)
+                  }, 2000)
+                }
               } else {
                 if (log) console.log("京东商城-转盘签到失败response: \n" + data)
-                if (data.match(/chances\":\"1\".+未中奖/)) {
-                  setTimeout(function() {
-                    JingDongTurn()
+                if (data.match(/未中奖/)) {
+                  merge.JDTurn.notify += merge.JDTurn.notify ? "\n京东商城-转盘: 成功, 状态: 未中奖 🐶 (多次)" : "京东商城-转盘: 成功, 状态: 未中奖 🐶"
+                  merge.JDTurn.success += 1
+                if (cc.data.chances != "0") {
+                  setTimeout(() => {
+                    JingDongTurn(s)
                   }, 2000)
-                } else if (data.match(/chances\":\"0\".+未中奖/)) {
-                  merge.JDTurn.notify = "京东商城-转盘: 成功, 状态: 未中奖 🐶"
-                  merge.JDTurn.success = 1
+                }
                 } else if (data.match(/(T215|次数为0)/)) {
                   merge.JDTurn.notify = "京东商城-转盘: 失败, 原因: 已转过 ⚠️"
                   merge.JDTurn.fail = 1
@@ -254,8 +290,8 @@ function JingDongTurn(s) {
                   merge.JDTurn.notify = "京东商城-转盘: 失败, 原因: 无支付密码 ⚠️"
                   merge.JDTurn.fail = 1
                 } else {
-                  merge.JDTurn.notify = "京东商城-转盘: 失败, 原因: 未知 ⚠️"
-                  merge.JDTurn.fail = 1
+                  merge.JDTurn.notify += merge.JDTurn.notify ? "\n京东商城-转盘: 失败, 原因: 未知 ⚠️ (多次)" : "京东商城-转盘: 失败, 原因: 未知 ⚠️"
+                  merge.JDTurn.fail += 1
                 }
               }
             }
@@ -276,7 +312,7 @@ function JingRongBean(s) {
     const login = {
       url: 'https://ms.jr.jd.com/gw/generic/zc/h5/m/signRecords',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
         Referer: "https://jddx.jd.com/m/money/index.html?from=sign",
       },
       body: "reqData=%7B%22bizLine%22%3A2%7D"
@@ -285,9 +321,8 @@ function JingRongBean(s) {
     const JRBUrl = {
       url: 'https://ms.jr.jd.com/gw/generic/zc/h5/m/signRewardGift',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
         Referer: "https://jddx.jd.com/m/jddnew/money/index.html",
-        "Content-Type": "application/x-www-form-urlencoded"
       },
       body: "reqData=%7B%22bizLine%22%3A2%2C%22signDate%22%3A%221%22%2C%22deviceInfo%22%3A%7B%22os%22%3A%22iOS%22%7D%2C%22clientType%22%3A%22sms%22%2C%22clientVersion%22%3A%2211.0%22%7D"
     };
@@ -367,7 +402,7 @@ function JingRongSteel(s) {
     const JRSUrl = {
       url: 'https://ms.jr.jd.com/gw/generic/gry/h5/m/signIn',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "reqData=%7B%22channelSource%22%3A%22JRAPP%22%2C%22riskDeviceParam%22%3A%22%7B%7D%22%7D"
     };
@@ -428,7 +463,7 @@ function JRDoubleSign(s) {
     const JRDSUrl = {
       url: 'https://nu.jr.jd.com/gw/generic/jrm/h5/m/process?',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "reqData=%7B%22actCode%22%3A%22FBBFEC496C%22%2C%22type%22%3A3%2C%22riskDeviceParam%22%3A%22%22%7D"
     };
@@ -490,37 +525,43 @@ function JingDongShake(s) {
     const JDSh = {
       url: 'https://api.m.jd.com/client.action?appid=vip_h5&functionId=vvipclub_shaking',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       }
     };
 
     $nobyda.get(JDSh, function(error, response, data) {
       try {
         if (error) {
-          merge.JDShake.notify = "京东商城-摇摇: 签到接口请求失败 ‼️‼️\n" + error
-          merge.JDShake.fail = 1
+          merge.JDShake.notify += merge.JDShake.notify ? "\n京东商城-摇摇: 签到接口请求失败 ‼️‼️ (多次)\n" + error : "京东商城-摇摇: 签到接口请求失败 ‼️‼️\n" + error
+          merge.JDShake.fail += 1
         } else {
           const cc = JSON.parse(data)
           if (data.match(/prize/)) {
             if (log) console.log("京东商城-摇一摇签到成功response: \n" + data)
             if (cc.data.prizeBean) {
-              merge.JDShake.notify = "京东商城-摇摇: 成功, 明细: " + cc.data.prizeBean.count + "京豆 🐶"
-              merge.JDShake.bean = cc.data.prizeBean.count
-              merge.JDShake.success = 1
+              merge.JDShake.notify += merge.JDShake.notify ? "\n京东商城-摇摇: 成功, 明细: " + cc.data.prizeBean.count + "京豆 🐶 (多次)" : "京东商城-摇摇: 成功, 明细: " + cc.data.prizeBean.count + "京豆 🐶"
+              merge.JDShake.bean += cc.data.prizeBean.count
+              merge.JDShake.success += 1
             } else {
               if (cc.data.prizeCoupon) {
-                merge.JDShake.notify = "京东商城-摇摇: 获得满" + cc.data.prizeCoupon.quota + "减" + cc.data.prizeCoupon.discount + "优惠券→ " + cc.data.prizeCoupon.limitStr
-                merge.JDShake.success = 1
+                merge.JDShake.notify += merge.JDShake.notify ? "\n京东商城-摇摇(多次): 获得满" + cc.data.prizeCoupon.quota + "减" + cc.data.prizeCoupon.discount + "优惠券→ " + cc.data.prizeCoupon.limitStr : "京东商城-摇摇: 获得满" + cc.data.prizeCoupon.quota + "减" + cc.data.prizeCoupon.discount + "优惠券→ " + cc.data.prizeCoupon.limitStr
+                merge.JDShake.success += 1
               } else {
-                merge.JDShake.notify = "京东商城-摇摇: 失败, 原因: 未知 ⚠️"
-                merge.JDShake.fail = 1
+                merge.JDShake.notify += merge.JDShake.notify ? "\n京东商城-摇摇: 失败, 原因: 未知 ⚠️ (多次)" : "京东商城-摇摇: 失败, 原因: 未知 ⚠️"
+                merge.JDShake.fail += 1
               }
+            }
+            if (cc.data.luckyBox.freeTimes != 0) {
+              JingDongShake(s)
             }
           } else {
             if (log) console.log("京东商城-摇一摇签到失败response: \n" + data)
             if (data.match(/true/)) {
-              merge.JDShake.notify = "京东商城-摇摇: 成功, 明细: 无奖励 🐶"
-              merge.JDShake.success = 1
+              merge.JDShake.notify += merge.JDShake.notify ? "\n京东商城-摇摇: 成功, 明细: 无奖励 🐶 (多次)" : "京东商城-摇摇: 成功, 明细: 无奖励 🐶"
+              merge.JDShake.success += 1
+              if (cc.data.luckyBox.freeTimes != 0) {
+                JingDongShake(s)
+              }
             } else {
               if (data.match(/(无免费|8000005)/)) {
                 merge.JDShake.notify = "京东商城-摇摇: 失败, 原因: 已摇过 ⚠️"
@@ -529,16 +570,11 @@ function JingDongShake(s) {
                 merge.JDShake.notify = "京东商城-摇摇: 失败, 原因: Cookie失效‼️"
                 merge.JDShake.fail = 1
               } else {
-                merge.JDShake.notify = "京东商城-摇摇: 失败, 原因: 未知 ⚠️"
-                merge.JDShake.fail = 1
+                merge.JDShake.notify += merge.JDShake.notify ? "\n京东商城-摇摇: 失败, 原因: 未知 ⚠️ (多次)" : "京东商城-摇摇: 失败, 原因: 未知 ⚠️"
+                merge.JDShake.fail += 1
               }
             }
           }
-          //if (data.match(/totalBeanCount/)) {
-            //if (cc.data.luckyBox.totalBeanCount) {
-              //merge.JDShake.Qbear = cc.data.luckyBox.totalBeanCount
-            //}
-          //}
         }
         resolve('done')
       } catch (eor) {
@@ -555,7 +591,7 @@ function JDGroceryStore(s) {
     const JDGSUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22caA6%2B%2FTo6Jfe%2FAKYm8gLQEchLXtYeB53heY9YzuzsZoaZs%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22signId%5C%22%3A%5C%22hEr1TO1FjXgaZs%2Fn4coLNw%3D%3D%5C%22%7D%22%7D&screen=750%2A1334&client=wh5&clientVersion=1.0.0&sid=0ac0caddd8a12bf58ea7a912a5c637cw&uuid=1fce88cd05c42fe2b054e846f11bdf33f016d676&area=19_1617_3643_8208"
     };
@@ -614,7 +650,7 @@ function JingDongClocks(s) {
     const JDCUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22LW67%2FHBJP72aMSByZLRaRqJGukOFKx9r4F87VrKBmogaZs%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Atrue%2C%5C%22signId%5C%22%3A%5C%22g2kYL2MvMgkaZs%2Fn4coLNw%3D%3D%5C%22%7D%22%7D&client=wh5"
     };
@@ -673,7 +709,7 @@ function JingDongPet(s) {
     const JDPETUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%226DiDTHMDvpNyoP9JUaEkki%2FsREOeEAl8M8REPQ%2F2eA4aZs%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22signId%5C%22%3A%5C%22Nk2fZhdgf5UaZs%2Fn4coLNw%3D%3D%5C%22%7D%22%7D&client=wh5"
     };
@@ -732,7 +768,7 @@ function JDFlashSale(s) {
     const JDPETUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=partitionJdSgin',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%7D&client=apple&clientVersion=8.4.6&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&sign=141ab5f9af92126bb46d50f3e8af758a&st=1579305780511&sv=102"
     };
@@ -761,8 +797,9 @@ function JDFlashSale(s) {
               merge.JDFSale.fail = 1
             } else {
               if (data.match(/(不存在|已结束|\"2008\")/)) {
-                merge.JDFSale.notify = "京东商城-闪购: 失败, 原因: 活动已结束 ⚠️"
+                merge.JDFSale.notify = "京东商城-闪购: 失败, 原因: 需瓜分 ⚠️"
                 merge.JDFSale.fail = 1
+                FlashSaleDivide(s)
               } else {
                 if (data.match(/(\"code\":\"3\"|\"1003\")/)) {
                   merge.JDFSale.notify = "京东商城-闪购: 失败, 原因: Cookie失效‼️"
@@ -784,13 +821,71 @@ function JDFlashSale(s) {
   });
 }
 
+function FlashSaleDivide(s) {
+
+  return new Promise(resolve => { setTimeout(() => {
+    const Url = {
+      url: 'https://api.m.jd.com/client.action?functionId=partitionJdShare',
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
+      },
+      body: "body=%7B%7D&client=apple&clientVersion=8.5.0&d_brand=apple&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&sign=958ba0e805094b4b0f6216e86190ab51&st=1582042405636&sv=120&wifiBssid=unknown"
+    };
+
+    $nobyda.post(Url, function(error, response, data) {
+      try {
+        if (error) {
+          merge.JDFSale.notify += "\n京东闪购-瓜分: 签到接口请求失败 ‼️‼️"
+          merge.JDFSale.fail += 1
+        } else {
+          const cc = JSON.parse(data)
+          if (cc.result.code == 0) {
+            if (log) console.log("京东闪购-瓜分签到成功response: \n" + data)
+            if (data.match(/(\"jdBeanNum\":\d+)/)) {
+              merge.JDFSale.notify += "\n京东闪购-瓜分: 成功, 明细: " + cc.result.jdBeanNum + "京豆 🐶"
+              merge.JDFSale.bean = cc.result.jdBeanNum
+              merge.JDFSale.success = 1
+            } else {
+              merge.JDFSale.notify += "\n京东闪购-瓜分: 成功, 明细: 无京豆 🐶"
+              merge.JDFSale.success = 1
+            }
+          } else {
+            if (log) console.log("京东闪购-瓜分签到失败response: \n" + data)
+            if (data.match(/(已参与|已领取|\"2006\")/)) {
+              merge.JDFSale.notify += "\n京东闪购-瓜分: 失败, 原因: 已瓜分 ⚠️"
+              merge.JDFSale.fail += 1
+            } else {
+              if (data.match(/(不存在|已结束|未开始|\"2008\")/)) {
+                merge.JDFSale.notify += "\n京东闪购-瓜分: 失败, 原因: 活动已结束 ⚠️"
+                merge.JDFSale.fail += 1
+              } else {
+                if (data.match(/(\"code\":\"1003\"|未获取)/)) {
+                  merge.JDFSale.notify += "\n京东闪购-瓜分: 失败, 原因: Cookie失效‼️"
+                  merge.JDFSale.fail += 1
+                } else {
+                  merge.JDFSale.notify += "\n京东闪购-瓜分: 失败, 原因: 未知 ⚠️"
+                  merge.JDFSale.fail += 1
+                }
+              }
+            }
+          }
+        }
+        resolve('done')
+      } catch (eor) {
+        $nobyda.notify("京东闪购-瓜分" + eor.name + "‼️", JSON.stringify(eor), eor.message)
+        resolve('done')
+      }
+    })}, s)
+  });
+}
+
 function JingDongBook(s) {
 
   return new Promise(resolve => { setTimeout(() => {
     const JDBookUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2F3SC6rw5iBg66qrXPGmZMqFDwcyXi%5C%2Findex.html%3Fcu%3Dtrue%26utm_source%3Dwww.linkstars.com%26utm_medium%3Dtuiguang%26utm_campaign%3Dt_1000089893_157_0_184__cc59020469361878%26utm_term%3De04e88b40a3c4e24898da7fcee54a609%22%7D%2C%22url%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2F3SC6rw5iBg66qrXPGmZMqFDwcyXi%5C%2Findex.html%3Fcu%3Dtrue%26utm_source%3Dwww.linkstars.com%26utm_medium%3Dtuiguang%26utm_campaign%3Dt_1000089893_157_0_184__cc59020469361878%26utm_term%3De04e88b40a3c4e24898da7fcee54a609%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22ziJpxomssJzA0Lnt9V%2BVYoW5AbqAOQ6XiMQuejSm7msaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22ruleSrv%5C%22%3A%5C%2200416621_28128239_t1%5C%22%2C%5C%22signId%5C%22%3A%5C%22jw9BKb%5C%2Fb%2BfEaZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&client=apple&clientVersion=8.4.6&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&sign=c1d6bdbb17d0d3f8199557265c6db92c&st=1579305128990&sv=121"
     };
@@ -852,7 +947,7 @@ function JDSecondhand(s) {
     const JDSDUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2F3S28janPLYmtFxypu37AYAGgivfp%5C%2Findex.html%3Fcu%3Dtrue%26utm_source%3Dwww.linkstars.com%26utm_medium%3Dtuiguang%26utm_campaign%3Dt_1000089893_157_0_184__cc59020469361878%26utm_term%3Dd802691049c9473897298c4de3159179%22%7D%2C%22url%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2F3S28janPLYmtFxypu37AYAGgivfp%5C%2Findex.html%3Fcu%3Dtrue%26utm_source%3Dwww.linkstars.com%26utm_medium%3Dtuiguang%26utm_campaign%3Dt_1000089893_157_0_184__cc59020469361878%26utm_term%3Dd802691049c9473897298c4de3159179%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%221aXiBKmxyz6XLsyntfp11AP4x7fjsFotKNTTk2Y39%2BUaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22ruleSrv%5C%22%3A%5C%2200124860_28262902_t1%5C%22%2C%5C%22signId%5C%22%3A%5C%226CR%5C%2FQvgfF5EaZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&client=apple&clientVersion=8.4.6&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&sign=56a228e0edada1283ba0f971c41633af&st=1579306801665&sv=121"
     };
@@ -914,9 +1009,9 @@ function JingDMakeup(s) {
     const JDMUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
-      body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22-1%22%7D%2C%22url%22%3A%22%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22BrrbMFwDMOFxMQzzIJNfYEoNLQhhUfcDeTnHobclnXIaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22ruleSrv%5C%22%3A%5C%2200138455_29326119_t1%5C%22%2C%5C%22signId%5C%22%3A%5C%22QrWSYkHHb9EaZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&client=apple&clientVersion=8.5.0&d_brand=apple&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&sign=c097f212b640b012dde453e38b170181&st=1581083231607&sv=120"
+      body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22-1%22%7D%2C%22url%22%3A%22%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22Ivkdqs6fb5SN1HsgsPsE7vJN9NGIydei6Ik%2B1rAyngwaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22ruleSrv%5C%22%3A%5C%2200138455_30206794_t1%5C%22%2C%5C%22signId%5C%22%3A%5C%22YU1cvfWmabwaZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&build=167092&client=apple&clientVersion=8.5.2&d_brand=apple&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&scope=11&sign=cc38bf6e24fd65e4f43868ccbe679f85&st=1582992598833&sv=112"
     };
 
     $nobyda.post(JDMUrl, function(error, response, data) {
@@ -976,9 +1071,9 @@ function JingDongClean(s) {
     const JDCUUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
-      body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22-1%22%7D%2C%22url%22%3A%22%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22HvENi4DscTLaP0AcMuJcj8znpSOv6847H9NkrtycVlIaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22ruleSrv%5C%22%3A%5C%2200561054_29747880_t1%5C%22%2C%5C%22signId%5C%22%3A%5C%2231CgSud60mEaZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&client=apple&clientVersion=8.5.0&d_brand=apple&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&sign=cb5945883dc459336f107d30e6abc60f&st=1581531991265&sv=121"
+      body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22-1%22%7D%2C%22url%22%3A%22%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%220DCYitB5zjVNs1uJtgAyvLQOzyQVTH%2BFMDqRxeYve3MaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22ruleSrv%5C%22%3A%5C%2200561054_30225115_t1%5C%22%2C%5C%22signId%5C%22%3A%5C%22sA4xbQtr7KEaZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&build=167058&client=apple&clientVersion=8.5.0&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&partner=apple&sign=076d7b52e4463e626bbbb1f372321579&st=1582795255840&sv=110"
     };
 
     $nobyda.post(JDCUUrl, function(error, response, data) {
@@ -1038,7 +1133,7 @@ function JingDongWomen(s) {
     const JDMUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22-1%22%7D%2C%22url%22%3A%22%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22OQmfgxmylrMM6EurCHg9lEjL1ShNb2dVjEja9MceBPgaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22ruleSrv%5C%22%3A%5C%2200002492_28085975_t1%5C%22%2C%5C%22signId%5C%22%3A%5C%22YE5T0wVaiL8aZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&build=167057&client=apple&clientVersion=8.5.0&d_brand=apple&d_model=iPhone8%2C2&networklibtype=JDNetworkBaseAF&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&osVersion=13.3.1&scope=11&screen=1242%2A2208&sign=7329899a26d8a8c3046b882d6df2b329&st=1581083524405&sv=101&uuid=coW0lj7vbXVin6h7ON%2BtMNFQqYBqMahr"
     };
@@ -1100,7 +1195,7 @@ function JingDongCash(s) {
     const JDCAUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=ccSignInNew',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22pageClickKey%22%3A%22CouponCenter%22%2C%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22childActivityUrl%22%3A%22openapp.jdmobile%253a%252f%252fvirtual%253fparams%253d%257b%255c%2522category%255c%2522%253a%255c%2522jump%255c%2522%252c%255c%2522des%255c%2522%253a%255c%2522couponCenter%255c%2522%257d%22%2C%22monitorSource%22%3A%22cc_sign_ios_index_config%22%7D&client=apple&clientVersion=8.5.0&d_brand=apple&d_model=iPhone8%2C2&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&scope=11&screen=1242%2A2208&sign=1cce8f76d53fc6093b45a466e93044da&st=1581084035269&sv=102"
     };
@@ -1158,7 +1253,7 @@ function JingDongShoes(s) {
     const JDSSUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%227Ive90vKJQaMEzWlhMgIwIih1KqMPXNQdPbewzqrg2MaZs%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Atrue%2C%5C%22ruleSrv%5C%22%3A%5C%2200116882_29523722_t0%5C%22%2C%5C%22signId%5C%22%3A%5C%22SeWbLe9ma04aZs%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22riskParam%22%3A%7B%22platform%22%3A%223%22%2C%22orgType%22%3A%222%22%2C%22openId%22%3A%22-1%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22eid%22%3A%22%22%2C%22fp%22%3A%22-1%22%2C%22shshshfp%22%3A%22b3fccfafc270b38e0bddfdc0e455b48f%22%2C%22shshshfpa%22%3A%22%22%2C%22shshshfpb%22%3A%22%22%2C%22childActivityUrl%22%3A%22%22%7D%2C%22siteClient%22%3A%22apple%22%2C%22mitemAddrId%22%3A%22%22%2C%22geo%22%3A%7B%22lng%22%3A%220%22%2C%22lat%22%3A%220%22%7D%2C%22addressId%22%3A%22%22%2C%22posLng%22%3A%22%22%2C%22posLat%22%3A%22%22%2C%22focus%22%3A%22%22%2C%22innerAnchor%22%3A%22%22%2C%22cv%22%3A%222.0%22%7D&client=wh5"
     };
@@ -1220,9 +1315,9 @@ function JDPersonalCare(s) {
     const JDPCUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
-      body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2FNJ1kd1PJWhwvhtim73VPsD1HwY3%5C%2Findex.html%3FcollectionId%3D294%22%7D%2C%22url%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2FNJ1kd1PJWhwvhtim73VPsD1HwY3%5C%2Findex.html%3FcollectionId%3D294%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22lpZuS8nCAvbWasm3tOnC6YKAyCnTSEx29uamSao%5C%2FkIwaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22ruleSrv%5C%22%3A%5C%2200167278_29738325_t1%5C%22%2C%5C%22signId%5C%22%3A%5C%220Kv0BEmT%2BkYaZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&build=167057&client=apple&clientVersion=8.5.0&d_brand=apple&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&scope=11&sign=00e19c46130e4fbef30e7e18d21b60f4&st=1581870238338&sv=100"
+      body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2FNJ1kd1PJWhwvhtim73VPsD1HwY3%5C%2Findex.html%3FcollectionId%3D294%22%7D%2C%22url%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2FNJ1kd1PJWhwvhtim73VPsD1HwY3%5C%2Findex.html%3FcollectionId%3D294%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22s55ikt1mqamq2urVohl2XynV6sTk2F7AcEqmlRXiAEwaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Afalse%2C%5C%22ruleSrv%5C%22%3A%5C%2200167278_30235275_t1%5C%22%2C%5C%22signId%5C%22%3A%5C%22CwZft%2B%2BK85YaZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&client=apple&clientVersion=8.5.2&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&partner=apple&scope=11&screen=1242%2A2208&sign=c80eda36646cc12b5cd8909976addb68&st=1583078529622&sv=121"
     };
 
     $nobyda.post(JDPCUrl, function(error, response, data) {
@@ -1282,7 +1377,7 @@ function JingRSeeAds(s) {
     const JRAdsUrl = {
       url: 'https://ms.jr.jd.com/gw/generic/jrm/h5/m/sendAdGb',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "reqData=%7B%22clientType%22%3A%22ios%22%2C%22actKey%22%3A%22176696%22%2C%22userDeviceInfo%22%3A%7B%22adId%22%3A9999999%7D%2C%22deviceInfoParam%22%3A%7B%22macAddress%22%3A%2202%3A00%3A00%3A00%3A00%3A00%22%2C%22channelInfo%22%3A%22appstore%22%2C%22IPAddress1%22%3A%22%22%2C%22OpenUDID%22%3A%22%22%2C%22clientVersion%22%3A%225.3.30%22%2C%22terminalType%22%3A%2202%22%2C%22osVersion%22%3A%22%22%2C%22appId%22%3A%22com.jd.jinrong%22%2C%22deviceType%22%3A%22iPhone8%2C2%22%2C%22networkType%22%3A%22%22%2C%22startNo%22%3A212%2C%22UUID%22%3A%22%22%2C%22IPAddress%22%3A%22%22%2C%22deviceId%22%3A%22%22%2C%22IDFA%22%3A%22%22%2C%22resolution%22%3A%22%22%2C%22osPlatform%22%3A%22iOS%22%7D%2C%22bussource%22%3A%22%22%7D"
     };
@@ -1340,7 +1435,7 @@ function JingRongGame(s) {
     const JRGameUrl = {
       url: 'https://ylc.m.jd.com/sign/signDone',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "channelId=1"
     };
@@ -1398,7 +1493,7 @@ function JingDongLive(s) {
     const JDLUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=userSign',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22riskParam%22%3A%7B%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22pageClickKey%22%3A%22Babel_Sign%22%2C%22childActivityUrl%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2FKcfFqWvhb5hHtaQkS4SD1UU6RcQ%5C%2Findex.html%3Fcu%3Dtrue%26utm_source%3Dwww.luck4ever.net%26utm_medium%3Dtuiguang%26utm_campaign%3Dt_1000042554_%26utm_term%3D8d1fbab27551485f8f9b1939aee1ffd0%22%7D%2C%22url%22%3A%22https%3A%5C%2F%5C%2Fpro.m.jd.com%5C%2Fmall%5C%2Factive%5C%2FKcfFqWvhb5hHtaQkS4SD1UU6RcQ%5C%2Findex.html%3Fcu%3Dtrue%26utm_source%3Dwww.luck4ever.net%26utm_medium%3Dtuiguang%26utm_campaign%3Dt_1000042554_%26utm_term%3D8d1fbab27551485f8f9b1939aee1ffd0%22%2C%22params%22%3A%22%7B%5C%22enActK%5C%22%3A%5C%22isDhQnCJUnjlNPoFf5Do0JM9l54aZ0%5C%2FeHe0aBgdJgcQaZs%5C%2Fn4coLNw%3D%3D%5C%22%2C%5C%22isFloatLayer%5C%22%3Atrue%2C%5C%22ruleSrv%5C%22%3A%5C%2200007152_29653514_t0%5C%22%2C%5C%22signId%5C%22%3A%5C%22ZYsm01V6Gr4aZs%5C%2Fn4coLNw%3D%3D%5C%22%7D%22%2C%22geo%22%3A%7B%22lng%22%3A%220.000000%22%2C%22lat%22%3A%220.000000%22%7D%7D&client=apple&clientVersion=8.5.0&d_brand=apple&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&sign=c7ecee5b465f5edd7ed2e2189fad2335&st=1581317924210&sv=120"
     };
@@ -1460,7 +1555,7 @@ function JingDongPrize(s) {
     const JDkey = {
       url: 'https://api.m.jd.com/client.action?functionId=vvipscdp_raffleAct_index&client=apple&clientVersion=8.1.0&appid=member_benefit_m',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
         Referer: "https://jdmall.m.jd.com/beansForPrizes",
       }
     };
@@ -1480,7 +1575,7 @@ function JingDongPrize(s) {
               const JDPUrl = {
                 url: 'https://api.m.jd.com/client.action?functionId=vvipscdp_raffleAct_lotteryDraw&body=%7B%22raffleActKey%22%3A%22' + merge.JDPrize.key + '%22%2C%22drawType%22%3A0%2C%22riskInformation%22%3A%7B%7D%7D&client=apple&clientVersion=8.1.0&appid=member_benefit_m',
                 headers: {
-                  Cookie: KEY,
+                  "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
                   Referer: "https://jdmall.m.jd.com/beansForPrizes",
                 }
               };
@@ -1591,7 +1686,7 @@ function TotalSteel() {
     const SteelUrl = {
       url: 'https://coin.jd.com/m/gb/getBaseInfo.html',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       }
     };
 
@@ -1618,7 +1713,7 @@ function TotalBean() {
     const BeanUrl = {
       url: 'https://wq.jd.com/user/info/QueryJDUserInfo?sceneval=2',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
         Referer: "https://wqs.jd.com/my/jingdou/my.shtml?sceneval=2"
       }
     };
@@ -1646,7 +1741,7 @@ function TotalCash() {
     const CashUrl = {
       url: 'https://api.m.jd.com/client.action?functionId=myhongbao_balance',
       headers: {
-        Cookie: KEY,
+        "Content-Type": "application/x-www-form-urlencoded", Cookie: KEY,
       },
       body: "body=%7B%22fp%22%3A%22-1%22%2C%22appToken%22%3A%22apphongbao_token%22%2C%22childActivityUrl%22%3A%22-1%22%2C%22country%22%3A%22cn%22%2C%22openId%22%3A%22-1%22%2C%22childActivityId%22%3A%22-1%22%2C%22applicantErp%22%3A%22-1%22%2C%22platformId%22%3A%22appHongBao%22%2C%22isRvc%22%3A%22-1%22%2C%22orgType%22%3A%222%22%2C%22activityType%22%3A%221%22%2C%22shshshfpb%22%3A%22-1%22%2C%22platformToken%22%3A%22apphongbao_token%22%2C%22organization%22%3A%22JD%22%2C%22pageClickKey%22%3A%22-1%22%2C%22platform%22%3A%221%22%2C%22eid%22%3A%22-1%22%2C%22appId%22%3A%22appHongBao%22%2C%22childActiveName%22%3A%22-1%22%2C%22shshshfp%22%3A%22-1%22%2C%22jda%22%3A%22-1%22%2C%22extend%22%3A%22-1%22%2C%22shshshfpa%22%3A%22-1%22%2C%22activityArea%22%3A%22-1%22%2C%22childActivityTime%22%3A%22-1%22%7D&client=apple&clientVersion=8.5.0&d_brand=apple&networklibtype=JDNetworkBaseAF&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&sign=fdc04c3ab0ee9148f947d24fb087b55d&st=1581245397648&sv=120"
     };
@@ -1668,13 +1763,26 @@ function TotalCash() {
   });
 }
 
+// Modified from yichahucha
 function nobyda() {
     const isRequest = typeof $request != "undefined"
     const isSurge = typeof $httpClient != "undefined"
     const isQuanX = typeof $task != "undefined"
+    const isJSBox = typeof $app != "undefined" && $app.info.bundleID == "app.cyan.jsbox"
+    const isNode = typeof require == "function" && !isJSBox;
+    const node = (() => {
+        if (isNode) {
+            const request = require('request');
+            return ({request})
+        } else {
+            return (null)
+        }
+    })()
     const notify = (title, subtitle, message) => {
         if (isQuanX) $notify(title, subtitle, message)
         if (isSurge) $notification.post(title, subtitle, message)
+        if (isNode) log(title+subtitle+message)
+        if (isJSBox) $push.schedule({title: title, body: subtitle?subtitle+"\n"+message:message})
     }
     const write = (value, key) => {
         if (isQuanX) return $prefs.setValueForKey(value, key)
@@ -1684,31 +1792,80 @@ function nobyda() {
         if (isQuanX) return $prefs.valueForKey(key)
         if (isSurge) return $persistentStore.read(key)
     }
+    const adapterStatus = (response) => {
+        if (response) {
+            if (response.status) {
+                response["statusCode"] = response.status
+            } else if (response.statusCode) {
+                response["status"] = response.statusCode
+            }
+        }
+        return response
+    }
     const get = (options, callback) => {
         if (isQuanX) {
             if (typeof options == "string") options = { url: options }
             options["method"] = "GET"
             $task.fetch(options).then(response => {
-                response["status"] = response.statusCode
-                callback(null, response, response.body)
+                callback(null, adapterStatus(response), response.body)
             }, reason => callback(reason.error, null, null))
         }
-        if (isSurge) $httpClient.get(options, callback)
+        if (isSurge) $httpClient.get(options, (error, response, body) => {
+            callback(error, adapterStatus(response), body)
+        })
+        if (isNode) {
+            node.request(options, (error, response, body) => {
+                callback(error, adapterStatus(response), body)
+            })
+        }
+        if (isJSBox) {
+            if (typeof options == "string") options = {url: options}
+            options["header"] = options["headers"]
+            options["handler"] = function (resp) {
+                let error = resp.error;
+                if (error) error = JSON.stringify(resp.error)
+                let body = resp.data;
+                if (typeof body == "object") body = JSON.stringify(resp.data);
+                callback(error, adapterStatus(resp.response), body)
+            };
+            $http.get(options);
+        }
     }
     const post = (options, callback) => {
         if (isQuanX) {
             if (typeof options == "string") options = { url: options }
             options["method"] = "POST"
             $task.fetch(options).then(response => {
-                response["status"] = response.statusCode
-                callback(null, response, response.body)
+                callback(null, adapterStatus(response), response.body)
             }, reason => callback(reason.error, null, null))
         }
-        if (isSurge) $httpClient.post(options, callback)
+        if (isSurge) {
+            $httpClient.post(options, (error, response, body) => {
+                callback(error, adapterStatus(response), body)
+            })
+        }
+        if (isNode) {
+            node.request.post(options, (error, response, body) => {
+                callback(error, adapterStatus(response), body)
+            })
+        }
+        if (isJSBox) {
+            if (typeof options == "string") options = {url: options}
+            options["header"] = options["headers"]
+            options["handler"] = function (resp) {
+                let error = resp.error;
+                if (error) error = JSON.stringify(resp.error)
+                let body = resp.data;
+                if (typeof body == "object") body = JSON.stringify(resp.data)
+                callback(error, adapterStatus(resp.response), body)
+            }
+            $http.post(options);
+        }
     }
-    const end = () => {
-        if (isQuanX) isRequest ? $done({}) : ""
-        if (isSurge) isRequest ? $done({}) : $done()
+    const log = (message) => console.log(message)
+    const done = (value = {}) => {
+        if (isQuanX) isRequest ? $done(value) : null
+        if (isSurge) isRequest ? $done(value) : $done()
     }
-    return { isRequest, isQuanX, isSurge, notify, write, read, get, post, end }
+    return{ isQuanX, isSurge, isJSBox, isRequest, notify, write, read, get, post, log, done }
 };
