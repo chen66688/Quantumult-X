@@ -183,7 +183,11 @@ GitHub: Neurogram-R
 const accounts = [
     ["学术交流", "https://wangzi.uk/auth/login", "chen168@live.com", "aqq123456"],
     ["几鸡", "https://ji-bc.pw/signin", "chen168@live.com", "aqq123456"],
+<<<<<<< HEAD
+    ["m87sub", "https://m87cloud.cn/auth/login", "858931168@qq.com", "aqq123456"]
+=======
     ["CCCAT2", "https://example.com/user/login.php", "example@cccat.com", "password"]
+>>>>>>> master
 ]
 
 async function launch() {
@@ -200,9 +204,9 @@ async function launch() {
 launch()
 
 function login(url, email, password, title) {
-    let loginPath = url.indexOf("auth/login") != -1 ? "auth/login" : "user/_login.php"
-    let table = {
-        url: url.replace(/(auth|user)\/login(.php)*/g, "") + loginPath,
+    let loginPath = url.indexOf("auth/login") != -1 ? "auth/login" :    ["CCCAT2", "https://example.com/user/login.php", "example@cccat.com", "password"]
+>>>>>>>-master
+inPath,
         header: {
 
         },
