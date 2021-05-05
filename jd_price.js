@@ -1,10 +1,6 @@
 /*
-# 京东比价 修改版
-原作者：@yichahucha
-==============Quantumult-X==============
-[rewrite_remote]
-https://raw.githubusercontent.com/Fokit/Quantumult-X/main/rewrite/jd_price.conf, tag=京东比价, update-interval=86400, opt-parser=false, enabled=false
-*/
+README：https://github.com/yichahucha/surge/tree/master
+ */
 
 const path1 = "serverConfig";
 const path2 = "wareBusiness";
@@ -40,7 +36,7 @@ if (url.indexOf(path2) != -1) {
     request_history_price(shareUrl, function (data) {
         if (data) {
             const lowerword = adword_obj();
-            lowerword.data.ad.textColor = "#000";
+            lowerword.data.ad.textColor = "#fe0000";
             let bestIndex = 0;
             for (let index = 0; index < floors.length; index++) {
                 const element = floors[index];
@@ -57,7 +53,7 @@ if (url.indexOf(path2) != -1) {
             if (data.ok == 1 && data.single) {
                 const lower = lowerMsgs(data.single)
                 const detail = priceSummary(data)
-                const tip = data.PriceRemark.Tip + " ✦"
+                const tip = data.PriceRemark.Tip + "（仅供参考）"
                 lowerword.data.ad.adword = `${lower} ${tip}\n${detail}`;
                 floors.insert(bestIndex, lowerword);
             }
@@ -75,22 +71,20 @@ if (url.indexOf(path2) != -1) {
 function lowerMsgs(data) {
     const lower = data.lowerPriceyh
     const lowerDate = dateFormat(data.lowerDateyh)
-    const lowerMsg = "✦ 历史最低价：¥" + String(lower) + ` (${lowerDate}) `
+    const lowerMsg = "🍵 历史最低到手价：¥" + String(lower) + ` (${lowerDate}) `
     return lowerMsg
 }
 
+
 function priceSummary(data) {
     let summary = ""
-    let listPriceDetail = data.PriceRemark.ListPriceDetail
-    listPriceDetail.pop()
+    let listPriceDetail = data.PriceRemark.ListPriceDetail.slice(0,4)
     let list = listPriceDetail.concat(historySummary(data.single))
     list.forEach((item, index) => {
         if (item.Name == "双11价格") {
-            item.Name = "双11价格"
+            item.Name = "双十一价格"
         } else if (item.Name == "618价格") {
-            item.Name = "618价格"
-        } else if (item.Name == "30天最低价") {
-            item.Name = "30天最低价"
+            item.Name = "六一八价格"
         }
         summary += `\n${item.Name}${getSpace(8)}${item.Price}${getSpace(8)}${item.Date}${getSpace(8)}${item.Difference}`
     })
@@ -100,7 +94,7 @@ function priceSummary(data) {
 function historySummary(single) {
     const rexMatch = /\[.*?\]/g;
     const rexExec = /\[(.*),(.*),"(.*)".*\]/;
-    let currentPrice, lowest60, lowest180, lowest360
+    let currentPrice, lowest30, lowest90, lowest180, lowest360
     let list = single.jiagequshiyh.match(rexMatch);
     list = list.reverse().slice(0, 360);
     list.forEach((item, index) => {
@@ -111,23 +105,30 @@ function historySummary(single) {
             let price = parseFloat(result[2]);
             if (index == 0) {
                 currentPrice = price
-                lowest60 = { Name: "  60天最低价", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
-                lowest180 = { Name: "180天最低价", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
-                lowest360 = { Name: "360天最低价", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
+                lowest30 = { Name: "三十天最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
+                lowest90 = { Name: "九十天最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
+                lowest180 = { Name: "一百八最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
+                lowest360 = { Name: "三百六最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
             }
-            if (index < 60 && price <= lowest60.price) {
-                lowest60.price = price
-                lowest60.Price = `¥${String(price)}`
-                lowest60.Date = date
-                lowest60.Difference = difference(currentPrice, price)
+            if (index < 30 && price < lowest30.price) {
+                lowest30.price = price
+                lowest30.Price = `¥${String(price)}`
+                lowest30.Date = date
+                lowest30.Difference = difference(currentPrice, price)
             }
-            if (index < 180 && price <= lowest180.price) {
+            if (index < 90 && price < lowest90.price) {
+                lowest90.price = price
+                lowest90.Price = `¥${String(price)}`
+                lowest90.Date = date
+                lowest90.Difference = difference(currentPrice, price)
+            }
+            if (index < 180 && price < lowest180.price) {
                 lowest180.price = price
                 lowest180.Price = `¥${String(price)}`
                 lowest180.Date = date
                 lowest180.Difference = difference(currentPrice, price)
             }
-            if (index < 360 && price <= lowest360.price) {
+            if (index < 360 && price < lowest360.price) {
                 lowest360.price = price
                 lowest360.Price = `¥${String(price)}`
                 lowest360.Date = date
@@ -135,7 +136,7 @@ function historySummary(single) {
             }
         }
     });
-    return [lowest60, lowest180, lowest360];
+    return [lowest30, lowest90, lowest180, lowest360];
 }
 
 function difference(currentPrice, price) {
