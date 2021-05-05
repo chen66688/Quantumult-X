@@ -1,9 +1,13 @@
 /*
 README：https://github.com/yichahucha/surge/tree/master
+^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBusiness|serverConfig|basicConfig|lite_wareBusiness|pingou_item)
  */
 
 const path1 = "serverConfig";
 const path2 = "wareBusiness";
+const path2h = "wareBusiness.style";
+const path3 = "basicConfig";
+const path4 = "pingou_item";
 const consolelog = false;
 const url = $request.url;
 const body = $response.body;
@@ -12,59 +16,84 @@ const $tool = tool();
 if (url.indexOf(path1) != -1) {
     let obj = JSON.parse(body);
     delete obj.serverConfig.httpdns;
+    delete obj.serverConfig.dnsvip;
+    delete obj.serverConfig.dnsvip_v6;
     $done({ body: JSON.stringify(obj) });
 }
 
-if (url.indexOf(path2) != -1) {
-    $done({ body });
+if (url.indexOf(path3) != -1) {
+    let obj = JSON.parse(body);
+    let JDHttpToolKit = obj.data.JDHttpToolKit;
+    let jCommandConfig = obj.data.jCommandConfig;
+    if (JDHttpToolKit) {
+        delete obj.data.JDHttpToolKit.httpdns;
+        delete obj.data.JDHttpToolKit.dnsvipV6;
+    }
+    if (jCommandConfig) {
+		delete obj.data.jCommandConfig.httpdnsConfig;
+	}
+    $done({ body: JSON.stringify(obj) });
+}
+
+if (url.indexOf(path2) != -1 || url.indexOf(path4) != -1) {
+    if (!$tool.isQuanX) {
+        $done({ body });
+    }
     let obj = JSON.parse(body);
     const floors = obj.floors;
     const commodity_info = floors[floors.length - 1];
-    const shareUrl = commodity_info.data.property.shareUrl;
+    const others = obj.others;
+	const domain = obj.domain;
+	const shareUrl =
+		url.indexOf(path4) != -1
+			? domain.h5Url
+			: url.indexOf(path2h) != -1
+			? others.property.shareUrl
+			: commodity_info.data.property.shareUrl;
     request_history_price(shareUrl, function (data) {
         if (data) {
             if (data.ok == 1 && data.single) {
                 const lower = lowerMsgs(data.single)
                 const detail = priceSummary(data)
-                const tip = data.PriceRemark.Tip + "（仅供参考）"
-                $tool.notify("", "", `${lower} ${tip}\n${detail}\n\n👉查看详情：http://tool.manmanbuy.com/historyLowest.aspx?url=${encodeURI(shareUrl)}`)
+                const tip = data.PriceRemark.Tip
+                $tool.notify("", "", `${lower}\n${tip}${detail}`)
             }
             if (data.ok == 0 && data.msg.length > 0) {
                 $tool.notify("", "", `⚠️ ${data.msg}`)
             }
         }
+        $done({ body });
     })
 }
 
 function lowerMsgs(data) {
     const lower = data.lowerPriceyh
     const lowerDate = dateFormat(data.lowerDateyh)
-    const lowerMsg = "〽️历史最低到手价：¥" + String(lower) + ` (${lowerDate}) `
+    const lowerMsg = "🍵 历史最低到手价：¥" + String(lower) + ` (${lowerDate}) `
     return lowerMsg
 }
 
+
 function priceSummary(data) {
     let summary = ""
-    let listPriceDetail = data.PriceRemark.ListPriceDetail
-    listPriceDetail.pop()
+    let listPriceDetail = data.PriceRemark.ListPriceDetail.slice(0,4)
     let list = listPriceDetail.concat(historySummary(data.single))
     list.forEach((item, index) => {
-        if (index == 2) {
+        if (item.Name == "双11价格") {
             item.Name = "双十一价格"
-        } else if (index == 3) {
+        } else if (item.Name == "618价格") {
             item.Name = "六一八价格"
-        } else if (index == 4) {
-            item.Name = "三十天最低"
         }
-        summary += `\n${item.Name}   ${item.Price}   ${item.Date}   ${item.Difference}`
+        let price = String(parseInt(item.Price.substr(1)));
+        summary += `\n${item.Name}   ${isNaN(price) ? "-" : "¥" + price}   ${item.Date}   ${item.Difference}`
     })
     return summary
 }
 
 function historySummary(single) {
     const rexMatch = /\[.*?\]/g;
-    const rexExec = /\[(.*),(.*),"(.*)"\]/;
-    let currentPrice, lowest60, lowest180, lowest360
+    const rexExec = /\[(.*),(.*),"(.*)".*\]/;
+    let currentPrice, lowest30, lowest90, lowest180, lowest360
     let list = single.jiagequshiyh.match(rexMatch);
     list = list.reverse().slice(0, 360);
     list.forEach((item, index) => {
@@ -75,23 +104,30 @@ function historySummary(single) {
             let price = parseFloat(result[2]);
             if (index == 0) {
                 currentPrice = price
-                lowest60 = { Name: "六十天最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
+                lowest30 = { Name: "三十天最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
+                lowest90 = { Name: "九十天最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
                 lowest180 = { Name: "一百八最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
                 lowest360 = { Name: "三百六最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
             }
-            if (index < 60 && price <= lowest60.price) {
-                lowest60.price = price
-                lowest60.Price = `¥${String(price)}`
-                lowest60.Date = date
-                lowest60.Difference = difference(currentPrice, price)
+            if (index < 30 && price < lowest30.price) {
+                lowest30.price = price
+                lowest30.Price = `¥${String(price)}`
+                lowest30.Date = date
+                lowest30.Difference = difference(currentPrice, price)
             }
-            if (index < 180 && price <= lowest180.price) {
+            if (index < 90 && price < lowest90.price) {
+                lowest90.price = price
+                lowest90.Price = `¥${String(price)}`
+                lowest90.Date = date
+                lowest90.Difference = difference(currentPrice, price)
+            }
+            if (index < 180 && price < lowest180.price) {
                 lowest180.price = price
                 lowest180.Price = `¥${String(price)}`
                 lowest180.Date = date
                 lowest180.Difference = difference(currentPrice, price)
             }
-            if (index < 360 && price <= lowest360.price) {
+            if (index < 360 && price < lowest360.price) {
                 lowest360.price = price
                 lowest360.Price = `¥${String(price)}`
                 lowest360.Date = date
@@ -99,11 +135,11 @@ function historySummary(single) {
             }
         }
     });
-    return [lowest60, lowest180, lowest360];
+    return [lowest30, lowest90, lowest180];
 }
 
 function difference(currentPrice, price) {
-    let difference = strip(currentPrice - price)
+    let difference = sub(currentPrice, price)
     if (difference == 0) {
         return "-"
     } else {
@@ -111,8 +147,18 @@ function difference(currentPrice, price) {
     }
 }
 
-function strip(num, precision = 12) {
-    return +parseFloat(num.toPrecision(precision));
+function sub(arg1, arg2) {
+    return add(arg1, -Number(arg2), arguments[2]);
+}
+
+function add(arg1, arg2) {
+    arg1 = arg1.toString(), arg2 = arg2.toString();
+    var arg1Arr = arg1.split("."), arg2Arr = arg2.split("."), d1 = arg1Arr.length == 2 ? arg1Arr[1] : "", d2 = arg2Arr.length == 2 ? arg2Arr[1] : "";
+    var maxLen = Math.max(d1.length, d2.length);
+    var m = Math.pow(10, maxLen);
+    var result = Number(((arg1 * m + arg2 * m) / m).toFixed(maxLen));
+    var d = arguments[2];
+    return typeof d === "number" ? Number((result).toFixed(d)) : result;
 }
 
 function request_history_price(share_url, callback) {
