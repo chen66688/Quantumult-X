@@ -1,9 +1,14 @@
 /*
-README：https://github.com/yichahucha/surge/tree/master
- */
+# 京东比价 修改版
+原作者：@yichahucha
+==============Quantumult-X==============
+[rewrite_remote]
+https://raw.githubusercontent.com/Fokit/Quantumult-X/main/rewrite/jd_price.conf, tag=京东比价, update-interval=86400, opt-parser=false, enabled=false
+*/
 
 const path1 = "serverConfig";
 const path2 = "wareBusiness";
+const path3 = "basicConfig";
 const consolelog = false;
 const url = $request.url;
 const body = $response.body;
@@ -12,6 +17,18 @@ const $tool = tool();
 if (url.indexOf(path1) != -1) {
     let obj = JSON.parse(body);
     delete obj.serverConfig.httpdns;
+    delete obj.serverConfig.dnsvip;
+    delete obj.serverConfig.dnsvip_v6;
+    $done({ body: JSON.stringify(obj) });
+}
+
+if (url.indexOf(path3) != -1) {
+    let obj = JSON.parse(body);
+    let JDHttpToolKit = obj.data.JDHttpToolKit;
+    if (JDHttpToolKit) {
+        delete obj.data.JDHttpToolKit.httpdns;
+        delete obj.data.JDHttpToolKit.dnsvipV6;
+    }
     $done({ body: JSON.stringify(obj) });
 }
 
@@ -23,7 +40,7 @@ if (url.indexOf(path2) != -1) {
     request_history_price(shareUrl, function (data) {
         if (data) {
             const lowerword = adword_obj();
-            lowerword.data.ad.textColor = "#fe0000";
+            lowerword.data.ad.textColor = "#000";
             let bestIndex = 0;
             for (let index = 0; index < floors.length; index++) {
                 const element = floors[index];
@@ -40,7 +57,7 @@ if (url.indexOf(path2) != -1) {
             if (data.ok == 1 && data.single) {
                 const lower = lowerMsgs(data.single)
                 const detail = priceSummary(data)
-                const tip = data.PriceRemark.Tip + "（仅供参考）"
+                const tip = data.PriceRemark.Tip + " ✦"
                 lowerword.data.ad.adword = `${lower} ${tip}\n${detail}`;
                 floors.insert(bestIndex, lowerword);
             }
@@ -58,7 +75,7 @@ if (url.indexOf(path2) != -1) {
 function lowerMsgs(data) {
     const lower = data.lowerPriceyh
     const lowerDate = dateFormat(data.lowerDateyh)
-    const lowerMsg = "〽️历史最低到手价：¥" + String(lower) + ` (${lowerDate}) `
+    const lowerMsg = "✦ 历史最低价：¥" + String(lower) + ` (${lowerDate}) `
     return lowerMsg
 }
 
@@ -68,12 +85,12 @@ function priceSummary(data) {
     listPriceDetail.pop()
     let list = listPriceDetail.concat(historySummary(data.single))
     list.forEach((item, index) => {
-        if (index == 2) {
-            item.Name = "双十一价格"
-        } else if (index == 3) {
-            item.Name = "六一八价格"
-        } else if (index == 4) {
-            item.Name = "三十天最低"
+        if (item.Name == "双11价格") {
+            item.Name = "双11价格"
+        } else if (item.Name == "618价格") {
+            item.Name = "618价格"
+        } else if (item.Name == "30天最低价") {
+            item.Name = "30天最低价"
         }
         summary += `\n${item.Name}${getSpace(8)}${item.Price}${getSpace(8)}${item.Date}${getSpace(8)}${item.Difference}`
     })
@@ -82,7 +99,7 @@ function priceSummary(data) {
 
 function historySummary(single) {
     const rexMatch = /\[.*?\]/g;
-    const rexExec = /\[(.*),(.*),"(.*)"\]/;
+    const rexExec = /\[(.*),(.*),"(.*)".*\]/;
     let currentPrice, lowest60, lowest180, lowest360
     let list = single.jiagequshiyh.match(rexMatch);
     list = list.reverse().slice(0, 360);
@@ -94,9 +111,9 @@ function historySummary(single) {
             let price = parseFloat(result[2]);
             if (index == 0) {
                 currentPrice = price
-                lowest60 = { Name: "六十天最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
-                lowest180 = { Name: "一百八最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
-                lowest360 = { Name: "三百六最低", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
+                lowest60 = { Name: "  60天最低价", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
+                lowest180 = { Name: "180天最低价", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
+                lowest360 = { Name: "360天最低价", Price: `¥${String(price)}`, Date: date, Difference: difference(currentPrice, price), price }
             }
             if (index < 60 && price <= lowest60.price) {
                 lowest60.price = price
@@ -122,7 +139,7 @@ function historySummary(single) {
 }
 
 function difference(currentPrice, price) {
-    let difference = strip(currentPrice - price)
+    let difference = sub(currentPrice, price)
     if (difference == 0) {
         return "-"
     } else {
@@ -130,8 +147,18 @@ function difference(currentPrice, price) {
     }
 }
 
-function strip(num, precision = 12) {
-    return +parseFloat(num.toPrecision(precision));
+function sub(arg1, arg2) {
+    return add(arg1, -Number(arg2), arguments[2]);
+}
+
+function add(arg1, arg2) {
+    arg1 = arg1.toString(), arg2 = arg2.toString();
+    var arg1Arr = arg1.split("."), arg2Arr = arg2.split("."), d1 = arg1Arr.length == 2 ? arg1Arr[1] : "", d2 = arg2Arr.length == 2 ? arg2Arr[1] : "";
+    var maxLen = Math.max(d1.length, d2.length);
+    var m = Math.pow(10, maxLen);
+    var result = Number(((arg1 * m + arg2 * m) / m).toFixed(maxLen));
+    var d = arguments[2];
+    return typeof d === "number" ? Number((result).toFixed(d)) : result;
 }
 
 function request_history_price(share_url, callback) {
