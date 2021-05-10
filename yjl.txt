@@ -5,3 +5,13 @@ http=a1.ap.fastqvpn.com:29980, username= 442782941043494912, password= 6b020882-
 http=a1.ap.fastqvpn.com:29980, username= 442624054172581888, password= 6ed54b90-ffe1-4431-9a5e-a31aab62e788, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8A2BZ一键连
 
 http=a1.ap.fastqvpn.com:29980, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连
+
+http=a1.ap.fastqvpn.com:29980, username= 442993652168396800, password= 2ef91648-089f-4c81-b34d-06f072ec51dd, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8ARAM一键连4df169c1d74f489683e1afaa73df4c6a
+
+# 樱花🌸VPN
+
+vmess=apn-e.connect-node.xyz:11508, method=chacha20-ietf-poly1305, password=c7d12d0f-89cd-3798-958d-e89990587faf, obfs=ws, obfs-host=japan-49.connect-node.xyz, obfs-uri=/web, fast-open=false, udp-relay=false, tag=日本 东京 | 公益 | 广州出口
+
+vmess=apn-e.connect-node.xyz:11509, method=chacha20-ietf-poly1305, password=c7d12d0f-89cd-3798-958d-e89990587faf, obfs=ws, obfs-host=usa-27.connect-node.xyz, obfs-uri=/web, fast-open=false, udp-relay=false, tag=美国 洛杉矶 | 公益 | 广州出口
+
+vmess=apn-e.connect-node.xyz:11507, method=chacha20-ietf-poly1305, password=c7d12d0f-89cd-3798-958d-e89990587faf, obfs=ws, obfs-host=phi-20.connect-node.xyz, obfs-uri=/web, fast-open=false, udp-relay=false, tag=菲律宾 马尼拉 | 公益 | 广州出口
