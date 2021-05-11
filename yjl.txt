@@ -8,3 +8,18 @@ http=a1.ap.fastqvpn.com:29980, username= 441906580061949952, password= a0dc0b03-
 
 http=a1.ap.fastqvpn.com:29980, username= 442993652168396800, password= 2ef91648-089f-4c81-b34d-06f072ec51dd, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8ARAM一键连4df169c1d74f489683e1afaa73df4c6a
 
+
+# 29982-29988端口(缺29986）
+http=global.ap.fastqvpn.com:29982, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连澳大利亚节点
+
+http=global.ap.fastqvpn.com:29983, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连加拿大节点
+
+http=global.ap.fastqvpn.com:29984, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连德国节点
+
+http=global.ap.fastqvpn.com:29985, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连日本节点
+
+http=global.ap.fastqvpn.com:29987, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连英国节点
+
+http=global.ap.fastqvpn.com:29988, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连美国节点
+
+http=global.ap.fastqvpn.com:29982, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连澳大利亚节点
