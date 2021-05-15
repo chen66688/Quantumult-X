@@ -1,12 +1,17 @@
+http=a1.ap.fastqvpn.com:29980, username=442994209083883520, password=6f12231e-dc70-49de-8cfe-85bd1186c382, over-tls=true, tls-verification=false, fast-open=false, udp-relay=false, tag=W8AR28一键连
+
+
 http=a1.ap.fastqvpn.com:29980, username=442956395017408512, password=5ee28ddd-6102-467a-abc7-93949f686ae8, over-tls=true, tls-verification=false, fast-open=false, udp-relay=false, tag=W8AU4G一键连
 
-http=a1.ap.fastqvpn.com:29980, username= 442782941043494912, password= 6b020882-b389-4b6a-887e-be5efedbf0b2, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8A5XV一键连
+http=a1.ap.fastqvpn.com:29980, username= 443042051454402560, password= d8ddfdc4-e9f8-4f74-8dcc-0b3449cb64b9, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8AVP8一键连
 
 http=a1.ap.fastqvpn.com:29980, username= 442624054172581888, password= 6ed54b90-ffe1-4431-9a5e-a31aab62e788, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8A2BZ一键连
 
 http=a1.ap.fastqvpn.com:29980, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连
 
 http=a1.ap.fastqvpn.com:29980, username= 442993652168396800, password= 2ef91648-089f-4c81-b34d-06f072ec51dd, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8ARAM一键连4df169c1d74f489683e1afaa73df4c6a
+
+
 
 
 # 29982-29988端口(缺29986）
