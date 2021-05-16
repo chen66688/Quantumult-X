@@ -33,4 +33,3 @@ http=global.ap.fastqvpn.com:29987, username= 441906580061949952, password= a0dc0
 
 http=global.ap.fastqvpn.com:29988, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连美国节点
 
-http=global.ap.fastqvpn.com:29982, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连澳大利亚节点
