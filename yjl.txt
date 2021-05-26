@@ -1,3 +1,4 @@
+http=global.ap.fastqvpn.com:29988, username=448990073124290560, password=0384b8f8-3764-40bd-b260-8e6f16384bdc, over-tls=true, tls-verification=false, fast-open=false, udp-relay=false, tag=W89VKM一键连global美国节点
 
 http=global.ap.fastqvpn.com:29988, username=445488015326842880, password=23334ca6-bb5e-4637-a71e-651ddb8f3fb2, over-tls=true, tls-verification=false, fast-open=false, udp-relay=false, tag=W8DBIN一键连global美国节点
 
