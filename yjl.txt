@@ -1,5 +1,5 @@
 
-
+http=global.ap.fastqvpn.com:29988, username=442994209083883520, password=6f12231e-dc70-49de-8cfe-85bd1186c382, over-tls=true, tls-verification=false, fast-open=false, udp-relay=false, tag=W8AR28一键连global美国节点
 
 http=global.ap.fastqvpn.com:29983, username=444389996644794368, password=58f392d9-2d79-4bf4-9231-741949a7bab3, over-tls=true, tls-verification=false, fast-open=false, udp-relay=false, tag=W827TM  一键连加拿大节点
 
@@ -41,4 +41,19 @@ http=global.ap.fastqvpn.com:29985, username= 441906580061949952, password= a0dc0
 http=global.ap.fastqvpn.com:29987, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连英国节点
 
 http=global.ap.fastqvpn.com:29988, username= 441906580061949952, password= a0dc0b03-8e09-423e-8a0c-6a1ba5d9dc95, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W88CR3一键连美国节点
+
+
+
+# 网络
+
+
+shadowsocks=154.127.50.138:31944, method=aes-256-gcm, password=aYNeKDMzYQYw4KbUbJA8Wszq, fast-open=false, udp-relay=false, tag=154.127.50.138:31944
+
+shadowsocks=154.127.50.138:31572, method=aes-256-gcm, password=n8w4StnbVD9dmXYn4Ajt87EA, fast-open=false, udp-relay=false, tag=154.127.50.138:31572
+
+shadowsocks=167.88.63.29:806, method=chacha20-ietf-poly1305, password=G!yBwPWH3Vao, fast-open=false, udp-relay=false, tag=167.88.63.29:806
+
+shadowsocks=138.199.42.151:49396, method=aes-256-gcm, password=BdRWC38L5JUDMTYNNxJGcUwB, fast-open=false, udp-relay=false, tag=138.199.42.151:49396
+
+shadowsocks=167.88.63.29:806, method=chacha20-ietf-poly1305, password=G!yBwPWH3Vao, fast-open=false, udp-relay=false, tag=167.88.63.29:806
 
