@@ -42,16 +42,4 @@ http=global.ap.fastqvpn.com:29988, username= 441906580061949952, password= a0dc0
 
 
 
-# 网络黑科技：https://gitee.com/xihuancaoni/dotpclinks/raw/master/README.md
-
-
-shadowsocks=154.127.50.138:31944, method=aes-256-gcm, password=aYNeKDMzYQYw4KbUbJA8Wszq, fast-open=false, udp-relay=false, tag=154.127.50.138:31944
-
-shadowsocks=154.127.50.138:31572, method=aes-256-gcm, password=n8w4StnbVD9dmXYn4Ajt87EA, fast-open=false, udp-relay=false, tag=154.127.50.138:31572
-
-shadowsocks=167.88.63.29:806, method=chacha20-ietf-poly1305, password=G!yBwPWH3Vao, fast-open=false, udp-relay=false, tag=167.88.63.29:806
-
-shadowsocks=138.199.42.151:49396, method=aes-256-gcm, password=BdRWC38L5JUDMTYNNxJGcUwB, fast-open=false, udp-relay=false, tag=138.199.42.151:49396
-
-shadowsocks=167.88.63.29:806, method=chacha20-ietf-poly1305, password=G!yBwPWH3Vao, fast-open=false, udp-relay=false, tag=167.88.63.29:806
 
