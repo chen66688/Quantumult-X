@@ -8,16 +8,14 @@ http=global.ap.fastqvpn.com:29988, username=448990073124290560, password=0384b8f
 http=global.ap.fastqvpn.com:29988, username=445488015326842880, password=23334ca6-bb5e-4637-a71e-651ddb8f3fb2, over-tls=true, tls-verification=false, fast-open=false, udp-relay=false, tag=W8DBIN一键连global美国节点
 
 http=a1.ap.fastqvpn.com:29980, username= 442956238737641472, password= b6cf01fe-6526-45bd-9eb3-6a2eb5954a3d, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8AU4T一键连
-
+9d8aff2cfe684724b4e818e3fc8c98b9
 
 http=a1.ap.fastqvpn.com:29980, username= 444412665897418752, password= b6efb30e-a523-4ff9-8e57-caed5c193ebf, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W82P7A一键连
 
 http=a1.ap.fastqvpn.com:29980, username=442994209083883520, password=6f12231e-dc70-49de-8cfe-85bd1186c382, over-tls=true, tls-verification=false, fast-open=false, udp-relay=false, tag=W8AR28一键连
 
 
-http=a1.ap.fastqvpn.com:29980, username=442956395017408512, password=5ee28ddd-6102-467a-abc7-93949f686ae8, over-tls=true, tls-verification=false, fast-open=false, udp-relay=false, tag=W8AU4G一键连
-
-http=a1.ap.fastqvpn.com:29980, username= 443042051454402560, password= d8ddfdc4-e9f8-4f74-8dcc-0b3449cb64b9, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8AVP8一键连
+http=a1.ap.fastqvpn.com:29980, username= 443042051454402560, password= d8ddfdc4-e9f8-4f74-8dcc-0b3449cb64b9, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8AVP8一键连168b37605f98487c8ed81ab8e8c8db7e
 
 http=a1.ap.fastqvpn.com:29980, username= 442624054172581888, password= 6ed54b90-ffe1-4431-9a5e-a31aab62e788, over-tls=true, tls-verification=false,fast-open=false, udp-relay=false, tag=W8A2BZ一键连
 
@@ -44,7 +42,7 @@ http=global.ap.fastqvpn.com:29988, username= 441906580061949952, password= a0dc0
 
 
 
-# 网络
+# 网络黑科技：https://gitee.com/xihuancaoni/dotpclinks/raw/master/README.md
 
 
 shadowsocks=154.127.50.138:31944, method=aes-256-gcm, password=aYNeKDMzYQYw4KbUbJA8Wszq, fast-open=false, udp-relay=false, tag=154.127.50.138:31944
