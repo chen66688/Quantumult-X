@@ -1,0 +1,11 @@
+# 联通免流
+
+vmess=hk-a.mj.qjnodeip.xyz:80, method=aes-128-gcm, password=c87d0288-e281-4ab2-a9b3-b635446c421b, obfs=ws, obfs-host=imageout.wotv.17wo.cn, obfs-uri=/, fast-open=false, udp-relay=false, tag=[墙角] 沃视频免流
+
+vmess=hk-a.mj.qjnodeip.xyz:80, method=aes-128-gcm, password=c87d0288-e281-4ab2-a9b3-b635446c421b, obfs=ws, obfs-host=v5-ttcp-b.douyinvod.com, obfs-uri=/, fast-open=false, udp-relay=false, tag=[墙角] -80端口联通e卡抖音免流
+
+vmess=hk-a.mj.qjnodeip.xyz:80, method=aes-128-gcm, password=c87d0288-e281-4ab2-a9b3-b635446c421b, obfs=ws, obfs-host=v.icbc.com.cn, obfs-uri=/, fast-open=false, udp-relay=false, tag=[墙角] -80端口联通e卡免流
+
+vmess=hk-a.mj.qjnodeip.xyz:80, method=aes-128-gcm, password=c87d0288-e281-4ab2-a9b3-b635446c421b, obfs=ws, obfs-host=pull.free.video.10010.com, obfs-uri=/, fast-open=false, udp-relay=false, tag=[墙角] 手厅免流
+
+
