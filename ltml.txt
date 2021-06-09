@@ -8,4 +8,13 @@ vmess=hk-a.mj.qjnodeip.xyz:80, method=aes-128-gcm, password=c87d0288-e281-4ab2-a
 
 vmess=hk-a.mj.qjnodeip.xyz:80, method=aes-128-gcm, password=c87d0288-e281-4ab2-a9b3-b635446c421b, obfs=ws, obfs-host=pull.free.video.10010.com, obfs-uri=/, fast-open=false, udp-relay=false, tag=[墙角] 手厅免流
 
+vmess=18.163.186.66:80, method=aes-128-gcm, password=cf077a43-4e91-3fff-83cb-533bf21ed019, obfs=ws, obfs-host=imageout.wotv.17wo.cn, obfs-uri=/, fast-open=false, udp-relay=false, tag=上课云联通e卡沃视频免流香港 A
 
+vmess=18.163.186.66:80, method=aes-128-gcm, password=cf077a43-4e91-3fff-83cb-533bf21ed019, obfs=ws, obfs-host=v.icbc.com.cn, obfs-uri=/, fast-open=false, udp-relay=false, tag=上课云联通e卡工行免流香港 A
+
+vmess=18.163.186.66:80, method=aes-128-gcm, password=cf077a43-4e91-3fff-83cb-533bf21ed019, obfs=ws, obfs-host=pull.free.video.10010.com, obfs-uri=/, fast-open=false, udp-relay=false, tag=上课云联通e卡手厅免流香港 A
+
+vmess=18.163.186.66:80, method=aes-128-gcm, password=cf077a43-4e91-3fff-83cb-533bf21ed019, obfs=ws, obfs-host=v5-ttcp-b.douyinvod.com, obfs-uri=/, fast-open=false, udp-relay=false, tag=上课云联通e卡抖音免流香港 A
+
+
+vmess=18.163.186.66:80, method=aes-128-gcm, password=cf077a43-4e91-3fff-83cb-533bf21ed019, obfs=ws, obfs-host=http://ltewap.tv189.com/ik4g/v/C40605803.html, obfs-uri=/, fast-open=false, udp-relay=false, tag=上课云电信卡爱奇艺免流香港 A?
