@@ -17,4 +17,3 @@ vmess=18.163.186.66:80, method=aes-128-gcm, password=cf077a43-4e91-3fff-83cb-533
 vmess=18.163.186.66:80, method=aes-128-gcm, password=cf077a43-4e91-3fff-83cb-533bf21ed019, obfs=ws, obfs-host=v5-ttcp-b.douyinvod.com, obfs-uri=/, fast-open=false, udp-relay=false, tag=上课云联通e卡抖音免流香港 A
 
 
-vmess=18.163.186.66:80, method=aes-128-gcm, password=cf077a43-4e91-3fff-83cb-533bf21ed019, obfs=ws, obfs-host=http://ltewap.tv189.com/ik4g/v/C40605803.html, obfs-uri=/, fast-open=false, udp-relay=false, tag=上课云电信卡爱奇艺免流香港 A?
