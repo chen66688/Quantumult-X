@@ -1,376 +1,220 @@
-/*
-README：https://github.com/yichahucha/surge/tree/master
- */
-
+const version = "0.0.0.2";
 const path1 = "serverConfig";
 const path2 = "wareBusiness";
 const path3 = "basicConfig";
 const url = $request.url;
 const body = $response.body;
-const $tool = tool();
+let now = 0;
+const $ = new Env("京东比价");
 
-if (url.indexOf(path1) != -1) {
-    let obj = JSON.parse(body);
-    delete obj.serverConfig.httpdns;
-    delete obj.serverConfig.dnsvip;
-    delete obj.serverConfig.dnsvip_v6;
-    $done({ body: JSON.stringify(obj) });
+Array.prototype.insert = function (index, item) {
+  this.splice(index, 0, item);
+};
+
+if (url.indexOf(path1) !== -1) {
+  let obj = JSON.parse(body);
+  delete obj.serverConfig.httpdns;
+  delete obj.serverConfig.dnsvip;
+  delete obj.serverConfig.dnsvip_v6;
+  $.done({body: JSON.stringify(obj)});
 }
 
-if (url.indexOf(path3) != -1) {
-    let obj = JSON.parse(body);
-    let JDHttpToolKit = obj.data.JDHttpToolKit;
-    if (JDHttpToolKit) {
-        delete obj.data.JDHttpToolKit.httpdns;
-        delete obj.data.JDHttpToolKit.dnsvipV6;
-    }
-    $done({ body: JSON.stringify(obj) });
+if (url.indexOf(path3) !== -1) {
+  let obj = JSON.parse(body);
+  let JDHttpToolKit = obj.data.JDHttpToolKit;
+  if (JDHttpToolKit) {
+    delete obj.data.JDHttpToolKit.httpdns;
+    delete obj.data.JDHttpToolKit.dnsvipV6;
+  }
+  $.done({body: JSON.stringify(obj)});
 }
 
-if (url.indexOf(path2) != -1) {
-    let obj = JSON.parse(body);
-    const floors = obj.floors;
-    const commodity_info = floors[floors.length - 1];
-    const shareUrl = commodity_info.data.property.shareUrl;
-    let msg = ""
-    request_history_price(shareUrl)
-        .then(data => {
-            if (data.priceTrend.series.length == 0) throw new Error('Whoops!')
-            msg = priceSummary(data.priceTrend)
-        })
-        .catch(error => msg = "暂无价格信息")
-        .finally(() => {
-            const lowerword = adword_obj()
-            lowerword.data.ad.textColor = "#fe0000"
-            let bestIndex = 0
-            for (let index = 0; index < floors.length; index++) {
-                const element = floors[index]
-                if (element.mId == lowerword.mId) {
-                    bestIndex = index + 1
-                    break
-                } else {
-                    if (element.sortId > lowerword.sortId) {
-                        bestIndex = index
-                        break
-                    }
-                }
-            }
-            lowerword.data.ad.adword = msg
-            floors.insert(bestIndex, lowerword)
-            $done({ body: JSON.stringify(obj) })
-        })
+if (url.indexOf(path2) !== -1) {
+  if (Math.ceil(Math.random() * 4) === 1) {
+    $.get({url: "https://raw.githubusercontent.com/JDHelloWorld/jd_price/main/version.log"}, (err, resp, data) => {
+      let latest = data.split('\n')[0]
+      let msg = data.split('\n')[1]
+      if (version !== latest) {
+        $.msg('请更新！', `最新：${latest}  Github:JDHelloWorld`, `更新内容${msg}`)
+        $.done({body});
+        return false
+      } else {
+        showHistory()
+      }
+    })
+  } else {
+    showHistory()
+  }
 }
 
-function priceSummary(data) {
-	data = data.series[0]
-	let summary = `🍵 当前: ${parseFloat(data.current / 100.0)}${getSpace(8)}最低: ${parseFloat(data.min / 100.0)}${getSpace(8)}最高: ${parseFloat(data.max / 100.0)}`;
-	const list = historySummary(data.data);
-	list.forEach((item, index) => {
-		summary += `\n${item.Name}${getSpace(8)}${item.Price}${getSpace(8)}${item.Date
-			}${getSpace(8)}${item.Difference}`;
-	});
-	return summary;
-}
+function showHistory() {
+  let obj = JSON.parse(body);
+  const floors = obj.floors;
+  const commodity_info = floors[floors.length - 1];
+  const shareUrl = commodity_info.data.property.shareUrl;
+  // 当前价格
+  if (commodity_info.data.otherUseBannerInfo)
+    now = parseInt(commodity_info.data.otherUseBannerInfo.bannerPrice.replace('¥', ''));
+  else
+    now = parseInt(commodity_info.data.priceInfo.jprice)
+  request_history_price(shareUrl, data => {
+    if (data) {
+      const lowerword = adword_obj();
+      lowerword.data.ad.textColor = "#fe0000";
+      let bestIndex = 0;
+      for (let index = 0; index < floors.length; index++) {
+        const element = floors[index];
+        if (element.mId === lowerword.mId) {
+          bestIndex = index + 1;
+          break;
+        } else {
+          if (element.sortId > lowerword.sortId) {
+            bestIndex = index;
+            break;
+          }
+        }
+      }
 
-function historySummary(list) {
-	let currentPrice, lowest30, lowest90, lowest180, lowest360, price11, price618;
-	list = list.reverse().slice(0, 360);
-	list.forEach((item, index) => {
-		const date = getExactTime(item.x);
-		let price = parseFloat(item.y / 100.0);
-		if (index == 0) {
-			currentPrice = price;
-			price618 = {
-				Name: "六一八价格",
-				Price: "-",
-				Date: "-",
-				Difference: "-",
-				price: "-",
-			};
-			price11 = {
-				Name: "双十一价格",
-				Price: "-",
-				Date: "-",
-				Difference: "-",
-				price: "-",
-			};
-			lowest30 = {
-				Name: "三十天最低",
-				Price: `¥${String(price)}`,
-				Date: date,
-				Difference: difference(currentPrice, price),
-				price,
-			};
-			lowest90 = {
-				Name: "九十天最低",
-				Price: `¥${String(price)}`,
-				Date: date,
-				Difference: difference(currentPrice, price),
-				price,
-			};
-			lowest180 = {
-				Name: "一百八最低",
-				Price: `¥${String(price)}`,
-				Date: date,
-				Difference: difference(currentPrice, price),
-				price,
-			};
-			lowest360 = {
-				Name: "三百六最低",
-				Price: `¥${String(price)}`,
-				Date: date,
-				Difference: difference(currentPrice, price),
-				price,
-			};
-		}
-		if (date.indexOf("06-18") != -1) {
-			price618.price = price;
-			price618.Price = `¥${String(price)}`;
-			price618.Date = date;
-			price618.Difference = difference(currentPrice, price);
-		}
-		if (date.indexOf("11-11") != -1) {
-			price11.price = price;
-			price11.Price = `¥${String(price)}`;
-			price11.Date = date;
-			price11.Difference = difference(currentPrice, price);
-		}
-		if (index < 30 && price < lowest30.price) {
-			lowest30.price = price;
-			lowest30.Price = `¥${String(price)}`;
-			lowest30.Date = date;
-			lowest30.Difference = difference(currentPrice, price);
-		}
-		if (index < 90 && price < lowest90.price) {
-			lowest90.price = price;
-			lowest90.Price = `¥${String(price)}`;
-			lowest90.Date = date;
-			lowest90.Difference = difference(currentPrice, price);
-		}
-		if (index < 180 && price < lowest180.price) {
-			lowest180.price = price;
-			lowest180.Price = `¥${String(price)}`;
-			lowest180.Date = date;
-			lowest180.Difference = difference(currentPrice, price);
-		}
-		if (index < 360 && price < lowest360.price) {
-			lowest360.price = price;
-			lowest360.Price = `¥${String(price)}`;
-			lowest360.Date = date;
-			lowest360.Difference = difference(currentPrice, price);
-		}
-	});
-	return [lowest30, lowest90, lowest180, lowest360, price618, price11];
-}
+      // 成功
+      if (data.ok === 1) {
+        lowerword.data.ad.adword = data.text;
+        floors.insert(bestIndex, lowerword);
+      }
 
-async function request_history_price(share_url) {
-	const options = {
-		headers: {
-			"User-Agent":
-				"bijiago/1.4.2 (com.bijiago.app; build:65; iOS 14.5.1) Alamofire/4.9.1",
-			"Content-Type": "application/x-www-form-urlencoded",
-		},
-	};
-
-	const rid = new Promise(function (resolve, reject) {
-		options.url = "https://app.bijiago.com/service/product?app_platform=ios&app_version=65&device=750%2A1334&opt=product&posi=default&url=" + encodeURIComponent(share_url);
-		$tool.get(options, function (error, response, data) {
-			if (!error) {
-				resolve(JSON.parse(data))
-			} else {
-				reject(error)
-			}
-		})
-	})
-
-	const priceTrend = (rid, dq_id) => {
-		return new Promise(function (resolve, reject) {
-			options.url = "https://app.bijiago.com/service/product"
-			options.body = `app_platform=ios&app_version=10000&append_promo=1&dp_id=${dq_id}&from=url&opt=priceTrend&rid=${rid}`
-			$tool.post(options, function (error, response, data) {
-				if (!error) {
-					resolve(JSON.parse(data));
-				} else {
-					reject(error)
-				}
-			})
-		})
-	}
-	const ridData = await (rid)
-	const priceTrendData = await (priceTrend(ridData.rid, ridData.product.dp_id))
-	return priceTrendData
-}
-
-function getExactTime(time) {
-	var date = new Date(time * 1000);
-	var year = date.getFullYear() + "-";
-	var month =
-		(date.getMonth() + 1 < 10
-			? "0" + (date.getMonth() + 1)
-			: date.getMonth() + 1) + "-";
-	var dates = date.getDate();
-	return year + month + dates;
-}
-
-function difference(currentPrice, price) {
-    let difference = sub(currentPrice, price)
-    if (difference == 0) {
-        return "-"
+      // 失败
+      if (data.ok === 0) {
+        lowerword.data.ad.adword = "⚠️ " + "失败！";
+        floors.insert(bestIndex, lowerword);
+      }
+      $.done({body: JSON.stringify(obj)});
     } else {
-        return `${difference > 0 ? "↑" : "↓"}${String(Math.abs(difference))}`
+      $.done({body});
     }
+  })
 }
 
-function sub(arg1, arg2) {
-    return add(arg1, -Number(arg2), arguments[2]);
-}
-
-function add(arg1, arg2) {
-    arg1 = arg1.toString(), arg2 = arg2.toString();
-    var arg1Arr = arg1.split("."), arg2Arr = arg2.split("."), d1 = arg1Arr.length == 2 ? arg1Arr[1] : "", d2 = arg2Arr.length == 2 ? arg2Arr[1] : "";
-    var maxLen = Math.max(d1.length, d2.length);
-    var m = Math.pow(10, maxLen);
-    var result = Number(((arg1 * m + arg2 * m) / m).toFixed(maxLen));
-    var d = arguments[2];
-    return typeof d === "number" ? Number((result).toFixed(d)) : result;
-}
-
-function getSpace(length) {
-    let blank = "";
-    for (let index = 0; index < length; index++) {
-        blank += " ";
+function request_history_price(share_url, callback) {
+  let id = share_url.match(/product\/(.*)\./)[1];
+  const option = {
+    url: `https://browser.bijiago.com/extension/price_towards?dp_ids=undefined&dp_id=${id}-3&ver=1&format=jsonp&union=union_bijiago&version=1594190525099&from_device=bijiago&from_type=bjg_ser&crc64=1&_=${new Date().getTime()}`,
+    headers: {
+      'Connection': 'keep-alive',
+      'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
+      'sec-ch-ua-mobile': '?0',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
+      'Accept': '*/*',
+      'Sec-Fetch-Site': 'cross-site',
+      'Sec-Fetch-Mode': 'no-cors',
+      'Sec-Fetch-Dest': 'script',
+      'Referer': 'https://item.jd.com/',
+      'Accept-Language': 'zh-CN,zh;q=0.9'
+    },
+    timeout: 5000
+  };
+  $.get(option, (err, resp, data) => {
+    if (err) {
+      console.log(err);
+      $.msg("ERROR", '出错', err);
+      callback(null, null);
     }
-    return blank;
+
+    data = JSON.parse(data)
+    let Jun18 = 0, Nov11 = 0;
+    let price30 = {price: 99999999, text: ""};
+    let promo = data['promo'];
+    let store = data['store'][1]
+
+    let history = {
+      max: Math.round(store['highest']),
+      maxt: time(store['max_stamp'] * 1000),
+      min: Math.round(store['lowest']),
+      mint: time(parseInt(store['min_stamp']) * 1000)
+    }
+
+    for (let j of promo) {
+      let stamp = j['time'] * 1000;
+      let day = time(stamp).split(' ')[0];
+      let price = Math.round(j['price'] / 100);
+      day === '2020-06-18' ? Jun18 = price : ""
+      day === '2020-11-11' ? Nov11 = price : ""
+      if (dayDiff(day) < 31 && price <= price30.price) {
+        price30.price = price;
+        price30.text = day;
+      }
+    }
+    // 去除99999999
+    if (history.min === 99999999) history.min = '-';
+    if (Jun18 === 0) Jun18 = '-'
+    if (Nov11 === 0) Nov11 = '-'
+    let arr = []
+    arr.push({name: '当前价', price: now, date: '', diff: ''})
+    arr.push({name: '最高价', price: history.max, date: history.maxt, diff: priceDiff(history.max)})
+    arr.push({name: '最低价', price: history.min, date: history.mint, diff: priceDiff(history.min)})
+    arr.push({name: '六一八', price: Jun18, date: "2020-06-18", diff: priceDiff(Jun18)})
+    arr.push({name: '双十一', price: Nov11, date: "2020-11-11", diff: priceDiff(Nov11)})
+    arr.push({name: '三十天', price: price30.price, date: price30.text, diff: priceDiff(price30.price)})
+    let s = ''
+    arr.forEach(item => {
+      if (item.price === '-' || item.price === 0)
+        s += `${item.name}${space('', 7)}-\n`
+      else
+        s += `${item.name}${space('', 6)}${item.price}${space(item.price, 8)}${item.date}${space(item.date, 14)}${item.diff}\n`;
+    })
+    callback({ok: 1, text: s});
+  })
 }
 
 function adword_obj() {
-    return {
-        "bId": "eCustom_flo_199",
-        "cf": {
-            "bgc": "#ffffff",
-            "spl": "empty"
-        },
-        "data": {
-            "ad": {
-                "adword": "",
-                "textColor": "#8C8C8C",
-                "color": "#f23030",
-                "newALContent": true,
-                "hasFold": true,
-                "class": "com.jd.app.server.warecoresoa.domain.AdWordInfo.AdWordInfo",
-                "adLinkContent": "",
-                "adLink": ""
-            }
-        },
-        "mId": "bpAdword",
-        "refId": "eAdword_0000000028",
-        "sortId": 13
-    }
+  return {
+    "bId": "eCustom_flo_199",
+    "cf": {
+      "bgc": "#ffffff",
+      "spl": "empty"
+    },
+    "data": {
+      "ad": {
+        "adword": "",
+        "textColor": "#8C8C8C",
+        "color": "#f23030",
+        "text-align": "justify",
+        "word-break": "break-all",
+        "newALContent": true,
+        "hasFold": true,
+        "class": "com.jd.app.server.warecoresoa.domain.AdWordInfo.AdWordInfo",
+        "adLinkContent": "",
+        "adLink": ""
+      }
+    },
+    "mId": "bpAdword",
+    "refId": "eAdword_0000000028",
+    "sortId": 13
+  }
 }
 
-function tool() {
-    const isSurge = typeof $httpClient != "undefined"
-    const isQuanX = typeof $task != "undefined"
-    const isResponse = typeof $response != "undefined"
-    const node = (() => {
-        if (typeof require == "function") {
-            const request = require('request')
-            return ({ request })
-        } else {
-            return (null)
-        }
-    })()
-    const notify = (title, subtitle, message) => {
-        if (isQuanX) $notify(title, subtitle, message)
-        if (isSurge) $notification.post(title, subtitle, message)
-        if (node) console.log(JSON.stringify({ title, subtitle, message }));
-    }
-    const write = (value, key) => {
-        if (isQuanX) return $prefs.setValueForKey(value, key)
-        if (isSurge) return $persistentStore.write(value, key)
-    }
-    const read = (key) => {
-        if (isQuanX) return $prefs.valueForKey(key)
-        if (isSurge) return $persistentStore.read(key)
-    }
-    const adapterStatus = (response) => {
-        if (response) {
-            if (response.status) {
-                response["statusCode"] = response.status
-            } else if (response.statusCode) {
-                response["status"] = response.statusCode
-            }
-        }
-        return response
-    }
-    const get = (options, callback) => {
-        if (isQuanX) {
-            if (typeof options == "string") options = { url: options }
-            options["method"] = "GET"
-            $task.fetch(options).then(response => {
-                callback(null, adapterStatus(response), response.body)
-            }, reason => callback(reason.error, null, null))
-        }
-        if (isSurge) $httpClient.get(options, (error, response, body) => {
-            callback(error, adapterStatus(response), body)
-        })
-        if (node) {
-            node.request(options, (error, response, body) => {
-                callback(error, adapterStatus(response), body)
-            })
-        }
-    }
-    const post = (options, callback) => {
-        if (isQuanX) {
-            if (typeof options == "string") options = { url: options }
-            options["method"] = "POST"
-            $task.fetch(options).then(response => {
-                callback(null, adapterStatus(response), response.body)
-            }, reason => callback(reason.error, null, null))
-        }
-        if (isSurge) {
-            $httpClient.post(options, (error, response, body) => {
-                callback(error, adapterStatus(response), body)
-            })
-        }
-        if (node) {
-            node.request.post(options, (error, response, body) => {
-                callback(error, adapterStatus(response), body)
-            })
-        }
-    }
-    return { isQuanX, isSurge, isResponse, notify, write, read, get, post }
+function time(time = +new Date()) {
+  let date = new Date(time + 8 * 3600 * 1000);
+  return date.toJSON().substr(0, 19).replace('T', ' ').split(' ')[0].replace(/\./g, '-');
 }
 
-Array.prototype.insert = function (index, item) {
-    this.splice(index, 0, item);
-};
-
-Date.prototype.format = function (fmt) {
-    var o = {
-        "y+": this.getFullYear(),
-        "M+": this.getMonth() + 1,
-        "d+": this.getDate(),
-        "h+": this.getHours(),
-        "m+": this.getMinutes(),
-        "s+": this.getSeconds(),
-        "q+": Math.floor((this.getMonth() + 3) / 3),
-        "S+": this.getMilliseconds()
-    };
-    for (var k in o) {
-        if (new RegExp("(" + k + ")").test(fmt)) {
-            if (k == "y+") {
-                fmt = fmt.replace(RegExp.$1, ("" + o[k]).substr(4 - RegExp.$1.length));
-            }
-            else if (k == "S+") {
-                var lens = RegExp.$1.length;
-                lens = lens == 1 ? 3 : lens;
-                fmt = fmt.replace(RegExp.$1, ("00" + o[k]).substr(("" + o[k]).length - 1, lens));
-            }
-            else {
-                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-            }
-        }
-    }
-    return fmt;
+function dayDiff(date) {
+  return parseInt((new Date() - new Date(date)) / (1000 * 60 * 60 * 24) + '')
 }
+
+function priceDiff(old) {
+  if (typeof old !== 'number')
+    return '-'
+  let diff = old - now;
+  if (diff === 0)
+    return '-'
+  return diff > 0 ? `↓${Math.round(diff)}` : `↑${Math.round(Math.abs(diff))}`;
+}
+
+function space(str, len) {
+  let blank = "";
+  for (let i = 0; i < len - (str + '').length; i++) {
+    blank += " ";
+  }
+  return blank;
+}
+
+function Env(t,e){"undefined"!=typeof process&&JSON.stringify(process.env).indexOf("GITHUB")>-1&&process.exit(0);class s{constructor(t){this.env=t}send(t,e="GET"){t="string"==typeof t?{url:t}:t;let s=this.get;return"POST"===e&&(s=this.post),new Promise((e,i)=>{s.call(this,t,(t,s,r)=>{t?i(t):e(s)})})}get(t){return this.send.call(this.env,t)}post(t){return this.send.call(this.env,t,"POST")}}return new class{constructor(t,e){this.name=t,this.http=new s(this),this.data=null,this.dataFile="box.dat",this.logs=[],this.isMute=!1,this.isNeedRewrite=!1,this.logSeparator="\n",this.startTime=(new Date).getTime(),Object.assign(this,e),this.log("",`🔔${this.name}, 开始!`)}isNode(){return"undefined"!=typeof module&&!!module.exports}isQuanX(){return"undefined"!=typeof $task}isSurge(){return"undefined"!=typeof $httpClient&&"undefined"==typeof $loon}isLoon(){return"undefined"!=typeof $loon}toObj(t,e=null){try{return JSON.parse(t)}catch{return e}}toStr(t,e=null){try{return JSON.stringify(t)}catch{return e}}getjson(t,e){let s=e;const i=this.getdata(t);if(i)try{s=JSON.parse(this.getdata(t))}catch{}return s}setjson(t,e){try{return this.setdata(JSON.stringify(t),e)}catch{return!1}}getScript(t){return new Promise(e=>{this.get({url:t},(t,s,i)=>e(i))})}runScript(t,e){return new Promise(s=>{let i=this.getdata("@chavy_boxjs_userCfgs.httpapi");i=i?i.replace(/\n/g,"").trim():i;let r=this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout");r=r?1*r:20,r=e&&e.timeout?e.timeout:r;const[o,h]=i.split("@"),n={url:`http://${h}/v1/scripting/evaluate`,body:{script_text:t,mock_type:"cron",timeout:r},headers:{"X-Key":o,Accept:"*/*"}};this.post(n,(t,e,i)=>s(i))}).catch(t=>this.logErr(t))}loaddata(){if(!this.isNode())return{};{this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),e=this.path.resolve(process.cwd(),this.dataFile),s=this.fs.existsSync(t),i=!s&&this.fs.existsSync(e);if(!s&&!i)return{};{const i=s?t:e;try{return JSON.parse(this.fs.readFileSync(i))}catch(t){return{}}}}}writedata(){if(this.isNode()){this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),e=this.path.resolve(process.cwd(),this.dataFile),s=this.fs.existsSync(t),i=!s&&this.fs.existsSync(e),r=JSON.stringify(this.data);s?this.fs.writeFileSync(t,r):i?this.fs.writeFileSync(e,r):this.fs.writeFileSync(t,r)}}lodash_get(t,e,s){const i=e.replace(/\[(\d+)\]/g,".$1").split(".");let r=t;for(const t of i)if(r=Object(r)[t],void 0===r)return s;return r}lodash_set(t,e,s){return Object(t)!==t?t:(Array.isArray(e)||(e=e.toString().match(/[^.[\]]+/g)||[]),e.slice(0,-1).reduce((t,s,i)=>Object(t[s])===t[s]?t[s]:t[s]=Math.abs(e[i+1])>>0==+e[i+1]?[]:{},t)[e[e.length-1]]=s,t)}getdata(t){let e=this.getval(t);if(/^@/.test(t)){const[,s,i]=/^@(.*?)\.(.*?)$/.exec(t),r=s?this.getval(s):"";if(r)try{const t=JSON.parse(r);e=t?this.lodash_get(t,i,""):e}catch(t){e=""}}return e}setdata(t,e){let s=!1;if(/^@/.test(e)){const[,i,r]=/^@(.*?)\.(.*?)$/.exec(e),o=this.getval(i),h=i?"null"===o?null:o||"{}":"{}";try{const e=JSON.parse(h);this.lodash_set(e,r,t),s=this.setval(JSON.stringify(e),i)}catch(e){const o={};this.lodash_set(o,r,t),s=this.setval(JSON.stringify(o),i)}}else s=this.setval(t,e);return s}getval(t){return this.isSurge()||this.isLoon()?$persistentStore.read(t):this.isQuanX()?$prefs.valueForKey(t):this.isNode()?(this.data=this.loaddata(),this.data[t]):this.data&&this.data[t]||null}setval(t,e){return this.isSurge()||this.isLoon()?$persistentStore.write(t,e):this.isQuanX()?$prefs.setValueForKey(t,e):this.isNode()?(this.data=this.loaddata(),this.data[e]=t,this.writedata(),!0):this.data&&this.data[e]||null}initGotEnv(t){this.got=this.got?this.got:require("got"),this.cktough=this.cktough?this.cktough:require("tough-cookie"),this.ckjar=this.ckjar?this.ckjar:new this.cktough.CookieJar,t&&(t.headers=t.headers?t.headers:{},void 0===t.headers.Cookie&&void 0===t.cookieJar&&(t.cookieJar=this.ckjar))}get(t,e=(()=>{})){t.headers&&(delete t.headers["Content-Type"],delete t.headers["Content-Length"]),this.isSurge()||this.isLoon()?(this.isSurge()&&this.isNeedRewrite&&(t.headers=t.headers||{},Object.assign(t.headers,{"X-Surge-Skip-Scripting":!1})),$httpClient.get(t,(t,s,i)=>{!t&&s&&(s.body=i,s.statusCode=s.status),e(t,s,i)})):this.isQuanX()?(this.isNeedRewrite&&(t.opts=t.opts||{},Object.assign(t.opts,{hints:!1})),$task.fetch(t).then(t=>{const{statusCode:s,statusCode:i,headers:r,body:o}=t;e(null,{status:s,statusCode:i,headers:r,body:o},o)},t=>e(t))):this.isNode()&&(this.initGotEnv(t),this.got(t).on("redirect",(t,e)=>{try{if(t.headers["set-cookie"]){const s=t.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();s&&this.ckjar.setCookieSync(s,null),e.cookieJar=this.ckjar}}catch(t){this.logErr(t)}}).then(t=>{const{statusCode:s,statusCode:i,headers:r,body:o}=t;e(null,{status:s,statusCode:i,headers:r,body:o},o)},t=>{const{message:s,response:i}=t;e(s,i,i&&i.body)}))}post(t,e=(()=>{})){if(t.body&&t.headers&&!t.headers["Content-Type"]&&(t.headers["Content-Type"]="application/x-www-form-urlencoded"),t.headers&&delete t.headers["Content-Length"],this.isSurge()||this.isLoon())this.isSurge()&&this.isNeedRewrite&&(t.headers=t.headers||{},Object.assign(t.headers,{"X-Surge-Skip-Scripting":!1})),$httpClient.post(t,(t,s,i)=>{!t&&s&&(s.body=i,s.statusCode=s.status),e(t,s,i)});else if(this.isQuanX())t.method="POST",this.isNeedRewrite&&(t.opts=t.opts||{},Object.assign(t.opts,{hints:!1})),$task.fetch(t).then(t=>{const{statusCode:s,statusCode:i,headers:r,body:o}=t;e(null,{status:s,statusCode:i,headers:r,body:o},o)},t=>e(t));else if(this.isNode()){this.initGotEnv(t);const{url:s,...i}=t;this.got.post(s,i).then(t=>{const{statusCode:s,statusCode:i,headers:r,body:o}=t;e(null,{status:s,statusCode:i,headers:r,body:o},o)},t=>{const{message:s,response:i}=t;e(s,i,i&&i.body)})}}time(t,e=null){const s=e?new Date(e):new Date;let i={"M+":s.getMonth()+1,"d+":s.getDate(),"H+":s.getHours(),"m+":s.getMinutes(),"s+":s.getSeconds(),"q+":Math.floor((s.getMonth()+3)/3),S:s.getMilliseconds()};/(y+)/.test(t)&&(t=t.replace(RegExp.$1,(s.getFullYear()+"").substr(4-RegExp.$1.length)));for(let e in i)new RegExp("("+e+")").test(t)&&(t=t.replace(RegExp.$1,1==RegExp.$1.length?i[e]:("00"+i[e]).substr((""+i[e]).length)));return t}msg(e=t,s="",i="",r){const o=t=>{if(!t)return t;if("string"==typeof t)return this.isLoon()?t:this.isQuanX()?{"open-url":t}:this.isSurge()?{url:t}:void 0;if("object"==typeof t){if(this.isLoon()){let e=t.openUrl||t.url||t["open-url"],s=t.mediaUrl||t["media-url"];return{openUrl:e,mediaUrl:s}}if(this.isQuanX()){let e=t["open-url"]||t.url||t.openUrl,s=t["media-url"]||t.mediaUrl;return{"open-url":e,"media-url":s}}if(this.isSurge()){let e=t.url||t.openUrl||t["open-url"];return{url:e}}}};if(this.isMute||(this.isSurge()||this.isLoon()?$notification.post(e,s,i,o(r)):this.isQuanX()&&$notify(e,s,i,o(r))),!this.isMuteLog){let t=["","==============📣系统通知📣=============="];t.push(e),s&&t.push(s),i&&t.push(i),console.log(t.join("\n")),this.logs=this.logs.concat(t)}}log(...t){t.length>0&&(this.logs=[...this.logs,...t]),console.log(t.join(this.logSeparator))}logErr(t,e){const s=!this.isSurge()&&!this.isQuanX()&&!this.isLoon();s?this.log("",`❗️${this.name}, 错误!`,t.stack):this.log("",`❗️${this.name}, 错误!`,t)}wait(t){return new Promise(e=>setTimeout(e,t))}done(t={}){const e=(new Date).getTime(),s=(e-this.startTime)/1e3;this.log("",`🔔${this.name}, 结束! 🕛 ${s} 秒`),this.log(),(this.isSurge()||this.isQuanX()||this.isLoon())&&$done(t)}}(t,e)}
