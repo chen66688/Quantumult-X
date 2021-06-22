@@ -1,0 +1,3 @@
+# 联通免流
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGpwMDMtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E6%97%A5%E6%9C%AC3-V2RAY&obfsParam=jp03-vm0.ikuuu.casa&path=/hls/cctv5phd.m3u8&obfs=websocket
