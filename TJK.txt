@@ -1,0 +1,36 @@
+# 停机卡免流日本1-6
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGpwMDEtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E6%97%A5%E6%9C%AC1-V2ray&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGpwMDItdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E6%97%A5%E6%9C%AC2-V2ray&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGpwMDMtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E6%97%A5%E6%9C%AC3-V2ray&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGpwMDQtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E6%97%A5%E6%9C%AC4-V2ray&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGpwMDUtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E6%97%A5%E6%9C%AC5-V2ray&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGpwMDYtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E6%97%A5%E6%9C%AC6-V2ray&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+# 香港1-10
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMDEtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF1-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMDItdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF2-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMDMtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF3-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMDQtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF4-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMDUtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF5-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMDYtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF6-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMDctdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF7-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMDgtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF8-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMDktdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF9-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
+
+vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGhrMTAtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E9%A6%99%E6%B8%AF10-V2RAY&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
