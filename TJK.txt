@@ -1,5 +1,8 @@
 # 停机卡免流日本1-6
 
+
+vmess=hk01-vm0.ikuuu.casa:448, method=aes-128-gcm, password=86226fd6-360e-3770-82bb-6083cfa4159d, obfs=ws, obfs-host=a.189.cn, obfs-uri=/hls/cctv5phd.m3u8, fast-open=false, udp-relay=false, tag=香港1-V2RAY
+
 vmess://Y2hhY2hhMjAtcG9seTEzMDU6ODYyMjZmZDYtMzYwZS0zNzcwLTgyYmItNjA4M2NmYTQxNTlkQGpwMDEtdm0wLmlrdXV1LmNhc2E6NDQ4?remarks=%E5%81%9C%E6%9C%BA%E5%8D%A1%E6%97%A5%E6%9C%AC1-V2ray&obfsParam=a.189.cn&path=/hls/cctv5phd.m3u8&obfs=websocket
 
 
