@@ -1,3 +1,10 @@
+# 庆黎免流
+vmess=23.98.42.33:80, method=aes-128-gcm, password=11169e79-938b-42c6-8e27-5c6547ec5b9e, obfs=ws, obfs-host=a.189.cn, obfs-uri=/, fast-open=true, udp-relay=false, tag=庆黎停机卡香港服务器
+
+vmess=54.238.186.37:80, method=aes-128-gcm, password=11169e79-938b-42c6-8e27-5c6547ec5b9e, obfs=ws, obfs-host=a.189.cn, obfs-uri=/, fast-open=true, udp-relay=false, tag=庆黎停机卡日本公益节点2
+
+vmess=13.230.156.16:80, method=aes-128-gcm, password=11169e79-938b-42c6-8e27-5c6547ec5b9e, obfs=ws, obfs-host=a.189.cn, obfs-uri=/, fast-open=true, udp-relay=false, tag=庆黎停机卡日本公益节点
+
 # 停机卡免流日本1-6
 
 
