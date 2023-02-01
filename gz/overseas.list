@@ -87,6 +87,8 @@ HOST-SUFFIX,api.tiktokv.com,海外服务
 # > Zooba
 USER-AGENT,battleroyale*,海外服务
 
+HOST-SUFFIX,gitlab.com,海外服务
+
 # > Others
 HOST-SUFFIX,jable.tvm,海外服务
 HOST-SUFFIX,qxzy.top,海外服务
