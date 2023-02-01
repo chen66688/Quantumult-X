@@ -59,7 +59,7 @@ HOST-SUFFIX,wechat.com,大陆服务
 HOST-SUFFIX,wechatlegal.net,大陆服务
 HOST-SUFFIX,wechatpay.com,大陆服务
 HOST-SUFFIX,weixin.com,大陆服务
-HOST-SUFFIX,weixin.qq.com,大陆服务
+host-wildcard,*.weixin.qq.com,大陆服务
 HOST-SUFFIX,weixinbridge.com,大陆服务
 HOST-SUFFIX,weixinsxy.com,大陆服务
 HOST-SUFFIX,wxapp.tc.qq.com,大陆服务
