@@ -1,4 +1,22 @@
-﻿#海外服务# > 泥视频 +host-wildcard,*.mudvod.tv,海外服务host-wildcard,*.nivod.tv,海外服务host,biggggg.com,海外服务host,newpppp.com,海外服务host-wildcard,*.xvideos-cdn.com,海外服务host,www.xvideos.com,海外服务host,www.mgav1.cc,海外服务host,www.porn5f.com,海外服务host-suffix,xnxx-cdn.com,海外服务host,www.xnxx.com,海外服务host-wildcard,*.ksapi.me,海外服务host,www.btbdys.com,海外服务host,h5.zhihuav.com,海外服务host-wildcard,*.mtime.info,海外服务# > fileballhost,aliyun.example.com,海外服务
+﻿#海外服务
+ # > 泥视频 +
+ host-wildcard,*.mudvod.tv,海外服务
+ host-wildcard,*.nivod.tv,海外服务
+ host,biggggg.com,海外服务
+ host,newpppp.com,海外服务
+ host-wildcard,*.xvideos-cdn.com,海外服务
+ host,www.xvideos.com,海外服务
+ host,www.mgav1.cc,海外服务
+ host,www.porn5f.com,海外服务
+ host-suffix,xnxx-cdn.com,海外服务
+ host,www.xnxx.com,海外服务
+ host-wildcard,*.ksapi.me,海外服务
+ host,www.btbdys.com,海外服务
+ host,h5.zhihuav.com,海外服务
+ host-wildcard,*.mtime.info,海外服务
+ 
+ # > fileball
+ host,aliyun.example.com,海外服务
 
 # > Emby
 HOST-SUFFIX,emby-cf.plusmedia.site,海外服务
