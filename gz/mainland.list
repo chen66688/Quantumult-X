@@ -1,6 +1,8 @@
 ﻿# 大陆服务
 # 更新时间 2023.1.1
 
+host-suffix,local,大陆服务
+
 # paypal直连
 DOMAIN-SUFFIX,paypal.com,大陆服务
 DOMAIN-SUFFIX,paypalobjects.com,大陆服务
