@@ -2,17 +2,12 @@
 # > General
 DOMAIN-KEYWORD,adservice,REJECT
 
-# 屏蔽系统更新
-host, iphone-ld.apple.com,REJECT
-host, updates-http.cdn-apple.com,REJECT
-host, ns.itunes.apple.com,REJECT
-host, appldnld.apple.com,REJECT
-host, mesu.apple.com,REJECT
-host, xp.apple.com,REJECT
-host, gdmf.apple.com,REJECT
+DOMAIN-SUFFIX, iphone-ld.apple.com,REJECT
+DOMAIN-SUFFIX, mesu.apple.com,REJECT
+DOMAIN-SUFFIX, xp.apple.com,REJECT
+DOMAIN-SUFFIX, gdmf.apple.com,REJECT
 
-# 绕过企业证书过期
-host, ocsp.apple.com, REJECT
+DOMAIN-SUFFIX, ocsp.apple.com, REJECT
 
 DOMAIN-SUFFIX,1phads.com,REJECT
 DOMAIN-SUFFIX,1rtb.com,REJECT
