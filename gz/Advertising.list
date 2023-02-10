@@ -2,10 +2,12 @@
 # > General
 DOMAIN-KEYWORD,adservice,REJECT
 
+
 host, iphone-ld.apple.com,REJECT
 host, mesu.apple.com,REJECT
 host, xp.apple.com,REJECT
 host, gdmf.apple.com,REJECT
+
 
 host, ocsp.apple.com, REJECT
 
