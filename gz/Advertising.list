@@ -4,7 +4,7 @@ host,iphone-ld.apple.com,REJECT
 host,mesu.apple.com,REJECT
 host, xp.apple.com,REJECT
 host,gdmf.apple.com,REJECT
-
+host, app-site-association.cdn-apple.com, REJECT
 host,ocsp.apple.com, REJECT
 
 # > General
