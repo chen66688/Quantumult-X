@@ -7,6 +7,11 @@ host,mgw.alipay.com,DIRECT
 
 host-wildcard,*.vryunpan.cc,DIRECT
 
+DOMAIN,szshort.weixin.qq.com,DIRECT
+DOMAIN,szextshort.weixin.qq.com,DIRECT
+DOMAIN,szminorshort.weixin.qq.com,DIRECT
+DOMAIN,mp.weixin.qq.com,DIRECT 
+
 # China Area Network
 DOMAIN-SUFFIX,flyert.com,DIRECT
 DOMAIN-SUFFIX,gandi.net,DIRECT
