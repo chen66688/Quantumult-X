@@ -7,132 +7,132 @@
 ###############################################################
 
 # ======= 哔哩哔哩 ======= #
-DOMAIN-SUFFIX,biliapi.net,地理位置
-DOMAIN-SUFFIX,biliapi.com,地理位置 
-DOMAIN,api.bilibili.com,地理位置 
-DOMAIN,api.bilibili.tv,地理位置 
-DOMAIN,app.bilibili.com,地理位置 
-DOMAIN,api.live.bilibili.com,地理位置 
-DOMAIN,api.vc.bilibili.com,地理位置 
-DOMAIN,passport.bilibili.com,地理位置 
-DOMAIN,live-trace.bilibili.com,地理位置 
-DOMAIN,message.bilibili.com,地理位置 
-DOMAIN,cm.bilibili.com,地理位置 
-DOMAIN-SUFFIX,bilibili.com,地理位置 
-DOMAIN-SUFFIX,im9.com,地理位置 
-DOMAIN-SUFFIX,acg.tv,地理位置 
-DOMAIN-SUFFIX,biligame.com,地理位置 
+DOMAIN-SUFFIX,biliapi.net,🌎地理位置
+DOMAIN-SUFFIX,biliapi.com,🌎地理位置 
+DOMAIN,api.bilibili.com,🌎地理位置 
+DOMAIN,api.bilibili.tv,🌎地理位置 
+DOMAIN,app.bilibili.com,🌎地理位置 
+DOMAIN,api.live.bilibili.com,🌎地理位置 
+DOMAIN,api.vc.bilibili.com,🌎地理位置 
+DOMAIN,passport.bilibili.com,🌎地理位置 
+DOMAIN,live-trace.bilibili.com,🌎地理位置 
+DOMAIN,message.bilibili.com,🌎地理位置 
+DOMAIN,cm.bilibili.com,🌎地理位置 
+DOMAIN-SUFFIX,bilibili.com,🌎地理位置 
+DOMAIN-SUFFIX,im9.com,🌎地理位置 
+DOMAIN-SUFFIX,acg.tv,🌎地理位置 
+DOMAIN-SUFFIX,biligame.com,🌎地理位置 
 
 # ======= 微博 ======= #
-DOMAIN,api.weibo.cn,地理位置
-DOMAIN,api.weibo.com,地理位置 
-DOMAIN-SUFFIX,weibocdn.com,地理位置 
-DOMAIN-KEYWORD,weibo,地理位置 
+DOMAIN,api.weibo.cn,🌎地理位置
+DOMAIN,api.weibo.com,🌎地理位置 
+DOMAIN-SUFFIX,weibocdn.com,🌎地理位置 
+DOMAIN-KEYWORD,weibo,🌎地理位置 
 
 # ======= 百度贴吧 ======= #
-DOMAIN,tieba.baidu.com,地理位置 
-DOMAIN,tbmsg.baidu.com,地理位置 
-DOMAIN,tb5.bdstatic.com,地理位置 
-DOMAIN,fclog.baidu.com,地理位置 
-DOMAIN,gsp0.baidu.com,地理位置
-DOMAIN,hm.baidu.com,地理位置 
-DOMAIN,www.baidu.com,地理位置
+DOMAIN,tieba.baidu.com,🌎地理位置 
+DOMAIN,tbmsg.baidu.com,🌎地理位置 
+DOMAIN,tb5.bdstatic.com,🌎地理位置 
+DOMAIN,fclog.baidu.com,🌎地理位置 
+DOMAIN,gsp0.baidu.com,🌎地理位置
+DOMAIN,hm.baidu.com,🌎地理位置 
+DOMAIN,www.baidu.com,🌎地理位置
  
 # ======= 微信 ======= #
-DOMAIN,szshort.weixin.qq.com,地理位置
-DOMAIN,szextshort.weixin.qq.com,地理位置
-DOMAIN,szminorshort.weixin.qq.com,地理位置
-DOMAIN,mp.weixin.qq.com,地理位置 
+DOMAIN,szshort.weixin.qq.com,🌎地理位置
+DOMAIN,szextshort.weixin.qq.com,🌎地理位置
+DOMAIN,szminorshort.weixin.qq.com,🌎地理位置
+DOMAIN,mp.weixin.qq.com,🌎地理位置 
 
 # ======= 知乎 ======= #
-#DOMAIN,zhihu-web-analytics.zhihu.com,地理位置
-#DOMAIN,www.zhihu.com,地理位置
-#DOMAIN,api.zhihu.com,地理位置
-DOMAIN-SUFFIX,zhihu.com,地理位置
-IP-CIDR,103.41.167.0/24,地理位置
+#DOMAIN,zhihu-web-analytics.zhihu.com,🌎地理位置
+#DOMAIN,www.zhihu.com,🌎地理位置
+#DOMAIN,api.zhihu.com,🌎地理位置
+DOMAIN-SUFFIX,zhihu.com,🌎地理位置
+IP-CIDR,103.41.167.0/24,🌎地理位置
 
 # ======= 国家反诈中心 ======= #
 DOMAIN-SUFFIX,gjfzpt.cn,REJECT 
 
 # ======= 抖音 ======= #
 # 请求域名过多，建议全局代理
-DOMAIN-KEYWORD,core-c-lq,地理位置
-DOMAIN-KEYWORD,core-lq,地理位置
-DOMAIN-KEYWORD,normal-c-lq,地理位置
-DOMAIN-KEYWORD,normal-lq,地理位置
-DOMAIN-KEYWORD,search-quic-lq,地理位置
-DOMAIN-KEYWORD,search-lq,地理位置
+DOMAIN-KEYWORD,core-c-lq,🌎地理位置
+DOMAIN-KEYWORD,core-lq,🌎地理位置
+DOMAIN-KEYWORD,normal-c-lq,🌎地理位置
+DOMAIN-KEYWORD,normal-lq,🌎地理位置
+DOMAIN-KEYWORD,search-quic-lq,🌎地理位置
+DOMAIN-KEYWORD,search-lq,🌎地理位置
 
 # ======= 头条 ======= #
-DOMAIN-SUFFIX,toutiaoapi.com,地理位置
+DOMAIN-SUFFIX,toutiaoapi.com,🌎地理位置
 
 # ======= 快手 ======= #
-DOMAIN-SUFFIX,gifshow.com,地理位置
-DOMAIN-SUFFIX,ksapisrv.com,地理位置
+DOMAIN-SUFFIX,gifshow.com,🌎地理位置
+DOMAIN-SUFFIX,ksapisrv.com,🌎地理位置
 
 # ======= 小红书 ======= #
-DOMAIN-SUFFIX,xiaohongshu.com,地理位置
+DOMAIN-SUFFIX,xiaohongshu.com,🌎地理位置
 
 # ======= 其乐论坛 ======= #
-DOMAIN,keylol.com,地理位置
+DOMAIN,keylol.com,🌎地理位置
 
 # ======= 西瓜视频 ======= #
-DOMAIN-SUFFIX,ixigua.com,地理位置
+DOMAIN-SUFFIX,ixigua.com,🌎地理位置
 
 # ======= 文叔叔 ======= #
-DOMAIN,www.wenshushu.cn,地理位置
+DOMAIN,www.wenshushu.cn,🌎地理位置
 
 # ======= 酷安 ======= #
-DOMAIN,api.coolapk.com,地理位置
+DOMAIN,api.coolapk.com,🌎地理位置
 
 # ======= 豆瓣 ======= #
 # iOS客户端，目前无法可靠地处理iOS端的请求，建议全局代理
 IP-CIDR,119.29.29.98/32,REJECT
-DOMAIN,frodo.douban.com,地理位置
+DOMAIN,frodo.douban.com,🌎地理位置
 # 网页端
-DOMAIN,www.douban.com,地理位置
+DOMAIN,www.douban.com,🌎地理位置
 
 # ======= TapTap ======= #
-DOMAIN,api.taptapdada.com,地理位置
+DOMAIN,api.taptapdada.com,🌎地理位置
 
 # ======= 网易大神 ======= #
-DOMAIN,god.gameyw.netease.com,地理位置
+DOMAIN,god.gameyw.netease.com,🌎地理位置
 
 # ======= 虎牙 ======= #
-DOMAIN-SUFFIX,huya.com,地理位置
+DOMAIN-SUFFIX,huya.com,🌎地理位置
 
 # ======= 懂球帝 ======= #
-DOMAIN-SUFFIX,dongqiudi.com,地理位置
+DOMAIN-SUFFIX,dongqiudi.com,🌎地理位置
 
 # ======= NGA ======= #
 # 个人主页ip，开代理以后发一个评论就会变代理ip
-DOMAIN,ngabbs.com,地理位置
+DOMAIN,ngabbs.com,🌎地理位置
 
 # ======= 小米社区 ======= #
-DOMAIN-SUFFIX,vip.miui.com,地理位置
+DOMAIN-SUFFIX,vip.miui.com,🌎地理位置
 
 # ======= 网易云音乐======= #
-DOMAIN-SUFFIX,music.163.com,地理位置
-DOMAIN,nstool.netease.com,地理位置
-DOMAIN,wanproxy.127.net,地理位置
-DOMAIN,mam.netease.com,地理位置
-DOMAIN,dt.netease.im,地理位置
-DOMAIN,api.iplay.163.com,地理位置
-DOMAIN,api.k.163.com,地理位置
-DOMAIN,lbs.netease.im,地理位置
-DOMAIN,wannos.127.net,地理位置
-DOMAIN,ac.dun.163.com,地理位置
-DOMAIN-SUFFIX,music.126.net,地理位置
-DOMAIN-SUFFIX,laiqukankan.com,地理位置
-DOMAIN-SUFFIX,music.ntes53.netease.com,地理位置
-IP-CIDR,101.71.154.241/32,地理位置
-IP-CIDR,103.126.92.132/32,地理位置
-IP-CIDR,103.126.92.133/32,地理位置
-IP-CIDR,112.13.119.18/32,地理位置
-IP-CIDR,112.13.122.4/32,地理位置
-IP-CIDR,115.236.118.34/32,地理位置
-IP-CIDR,115.236.121.4/32,地理位置
-IP-CIDR,45.254.48.1/32,地理位置
-IP-CIDR,59.111.160.195/32,地理位置
-IP-CIDR,59.111.19.33/32,地理位置
-IP-CIDR,59.111.19.53/32,地理位置
+DOMAIN-SUFFIX,music.163.com,🌎地理位置
+DOMAIN,nstool.netease.com,🌎地理位置
+DOMAIN,wanproxy.127.net,🌎地理位置
+DOMAIN,mam.netease.com,🌎地理位置
+DOMAIN,dt.netease.im,🌎地理位置
+DOMAIN,api.iplay.163.com,🌎地理位置
+DOMAIN,api.k.163.com,🌎地理位置
+DOMAIN,lbs.netease.im,🌎地理位置
+DOMAIN,wannos.127.net,🌎地理位置
+DOMAIN,ac.dun.163.com,🌎地理位置
+DOMAIN-SUFFIX,music.126.net,🌎地理位置
+DOMAIN-SUFFIX,laiqukankan.com,🌎地理位置
+DOMAIN-SUFFIX,music.ntes53.netease.com,🌎地理位置
+IP-CIDR,101.71.154.241/32,🌎地理位置
+IP-CIDR,103.126.92.132/32,🌎地理位置
+IP-CIDR,103.126.92.133/32,🌎地理位置
+IP-CIDR,112.13.119.18/32,🌎地理位置
+IP-CIDR,112.13.122.4/32,🌎地理位置
+IP-CIDR,115.236.118.34/32,🌎地理位置
+IP-CIDR,115.236.121.4/32,🌎地理位置
+IP-CIDR,45.254.48.1/32,🌎地理位置
+IP-CIDR,59.111.160.195/32,🌎地理位置
+IP-CIDR,59.111.19.33/32,🌎地理位置
+IP-CIDR,59.111.19.53/32,🌎地理位置
