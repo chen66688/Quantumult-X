@@ -1,0 +1,29 @@
+﻿################################################################
+# 分流作用：修正某些网站需要代理才能打开
+
+# 更新时间：2023.02.25
+# 策略选择：代理 proty
+
+
+# > 泥视频 +  
+
+ host-wildcard,*.mudvod.tv,proty
+ host-wildcard,*.nivod.tv,proty  
+ host,biggggg.com,proty
+ host,newpppp.com,proty  
+ host-wildcard,*.xvideos-cdn.com,proty  
+ host,www.xvideos.com,proty  
+ host,www.mgav1.cc,proty  
+ host,www.porn5f.com,proty  
+ host-suffix,xnxx-cdn.com,proty
+ host,www.xnxx.com,proty 
+ host-wildcard,*.ksapi.me,proty  
+ host,www.btbdys.com,proty  
+ host,h5.zhihuav.com,proty 
+ host-wildcard,*.mtime.info,proty  
+ host,gitlab.com,proty  
+ host,testflight.apple.com,proty 
+ 
+ # > fileball  
+
+ host,aliyun.example.com,proty

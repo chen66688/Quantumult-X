@@ -1,0 +1,28 @@
+﻿################################################################
+# 分流作用：修正某些自用分流
+
+# 更新时间：2023.02.25
+# 策略选择：拒绝 reject
+
+# > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
+# > "reject-200"    策略返回 HTTP 状态码 200,不附带任何额外内容
+# > "reject-img"    策略返回 HTTP 状态码 200,同时附带 1px gif
+# > "reject-dict"   策略返回 HTTP 状态码 200,同时附带一个空的 JSON 对象
+# > "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
+#############################################
+
+
+# > 屏蔽苹果系统更新
+HOST, iphone-ld.apple.com,reject
+HOST, updates-http.cdn-apple.com,reject
+HOST, ns.itunes.apple.com,reject
+HOST, appldnld.apple.com,reject
+HOST, mesu.apple.com,reject
+HOST, xp.apple.com,reject
+HOST, gdmf.apple.com,reject
+
+# 绕过企业证书过期
+HOST, ocsp.apple.com, reject
+
+# Safari 访问防跳转 App
+HOST, app-site-association.cdn-apple.com, reject
