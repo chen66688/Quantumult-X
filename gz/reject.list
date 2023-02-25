@@ -13,13 +13,10 @@
 
 
 # > 屏蔽苹果系统更新
-HOST, iphone-ld.apple.com,reject
-HOST, updates-http.cdn-apple.com,reject
-HOST, ns.itunes.apple.com,reject
-HOST, appldnld.apple.com,reject
 HOST, mesu.apple.com,reject
 HOST, xp.apple.com,reject
 HOST, gdmf.apple.com,reject
+HOST, iphone-ld.apple.com,reject
 
 # >绕过企业证书过期
 HOST, ocsp.apple.com, reject
