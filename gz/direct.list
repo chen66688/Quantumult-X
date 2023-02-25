@@ -12,45 +12,6 @@
 #############################################
 
 
-# > 苹果推送服务
-host-keyword, push.apple.com, direct
-
-# > 苹果时间同步
-host, time.apple.com, direct
-
-# > 苹果天气服务
-host-keyword, weather-edge.apple.com, direct
-host-keyword, weather-adge.apple.com, direct
-host-suffix, weather-data.apple.com, direct
-host-suffix, weather-map.apple.com, direct
-host-suffix, weather-analytics-events.apple.com, direct
-
-# > 苹果内购服务
-host-keyword, buy.itunes.apple.com, direct
-
-# > 苹果icloud
-host-keyword, icloud.com, direct
-
-# > 苹果输入法相关服务
-host-keyword, api.smoot.apple.com, direct
-host-keyword, api.smoot.apple.cn, direct
-
-# > 苹果iMessage服务
-host, init.ess.apple.com, direct
-
-# > 苹果其他服务
-host-keyword, ssl.apple.com, direct
-host-keyword, humb.apple.com, direct
-host, smp-device-content.apple.com, direct
-host-keyword, api-adservices.apple.com, direct
-host-keyword, ls.apple.com, direct
-host-keyword, gsa.apple.com, direct
-host-keyword, ess.apple.com, direct
-
-# >paypal直连
-DOMAIN-SUFFIX,paypal.com,direct
-DOMAIN-SUFFIX,paypalobjects.com,direct
-
 
 # > 新版抖音本地分流
 host-suffix, snssdk.com,direct
