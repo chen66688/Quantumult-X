@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些网站需要代理才能打开
 
-# 更新时间：2023.02.25
+# 更新时间：2023.02.26
 # 策略选择：代理 proty
 
 
@@ -1326,3 +1326,10 @@ IP-CIDR,96.23.20.70/32,proxy
 IP-CIDR,96.23.20.74/32,proxy
 IP-CIDR,96.23.20.78/32,proxy
 IP-CIDR,96.4.63.99/32,proxy
+
+# > 其它修正
+host,yazhouse8.com,proxy
+host,audio.yazhouseba.co,proxy
+host,gateway.icloud.com,proxy
+host,is.gd,proxy
+host,gh.sxbai.com,proxy
