@@ -36,7 +36,9 @@ ip-cidr, 192.168.3.1/24, direct
 ip-cidr, 192.168.5.1/24, direct
 
 # > 其他分流修正
+host-suffix,lacal,direct
 host,sub.danhu.ml,direct
+host-suffix,javfc2.xyz,direct
 host-keyword, anti-ad.net, direct
 
 host, ad.12306.cn, direct
