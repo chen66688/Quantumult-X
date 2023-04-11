@@ -51,3 +51,37 @@ host-keyword, anti-ad.net, direct
 
 host, ad.12306.cn, direct
 
+# > 微信分流
+HOST,dl.wechat.com,direct
+HOST,sgfindershort.wechat.com,direct
+HOST,sgilinkshort.wechat.com,direct
+HOST,sglong.wechat.com,direct
+HOST,sgminorshort.wechat.com,direct
+HOST,sgshort.wechat.com,direct
+HOST,tencentmap.wechat.com,direct
+HOST-SUFFIX,qlogo.cn,direct
+HOST-SUFFIX,qpic.cn,direct
+HOST-SUFFIX,servicewechat.com,direct
+HOST-SUFFIX,tenpay.com,direct
+HOST-SUFFIX,wechat.com,direct
+HOST-SUFFIX,wechatlegal.net,direct
+HOST-SUFFIX,wechatpay.com,direct
+HOST-SUFFIX,weixin.com,direct
+HOST-SUFFIX,weixin.qq.com,direct
+HOST-SUFFIX,weixinbridge.com,direct
+HOST-SUFFIX,weixinsxy.com,direct
+HOST-SUFFIX,wxapp.tc.qq.com,direct
+HOST-KEYWORD,43.156.222.,direct
+USER-AGENT,MicroMessenger*,direct
+USER-AGENT,WeChat*,direct
+IP-CIDR,101.32.104.4/32,direct
+IP-CIDR,101.32.104.41/32,direct
+IP-CIDR,101.32.104.56/32,direct
+IP-CIDR,101.32.118.25/32,direct
+IP-CIDR,101.32.133.16/32,direct
+IP-CIDR,101.32.133.209/32,direct
+IP-CIDR,101.32.133.53/32,direct
+IP-CIDR,129.226.107.244/32,direct
+IP-CIDR,129.226.3.47/32,direct
+IP-CIDR,162.62.163.63/32,direct
+
