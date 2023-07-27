@@ -12,6 +12,7 @@
 #############################################
 
 # > hotmail 邮箱分流
+host-keyword,mail.me.com,direct
 host-keyword,hotmail.com,direct
 host-keyword,live.com,direct
 host-keyword,outlook.com,direct
