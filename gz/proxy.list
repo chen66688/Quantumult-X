@@ -257,10 +257,10 @@ HOST-SUFFIX,易付通.cn,proxy
 HOST-SUFFIX,bing.com,proxy
 HOST-SUFFIX,xbox.com,proxy
 HOST-KEYWORD,bing,proxy
-HOST-KEYWORD,hotmail,proxy
+# > HOST-KEYWORD,hotmail,proxy
 HOST-KEYWORD,internetexplorer,proxy
 HOST-KEYWORD,joinms,proxy
-HOST-KEYWORD,live,proxy
+# >HOST-KEYWORD,live,proxy
 HOST-KEYWORD,microsoft,proxy
 HOST-KEYWORD,microsoft-online,proxy
 HOST-KEYWORD,microsofthouse,proxy
@@ -280,7 +280,7 @@ HOST-KEYWORD,msnewskids,proxy
 HOST-KEYWORD,office,proxy
 HOST-KEYWORD,onedrive,proxy
 HOST-KEYWORD,onenote,proxy
-HOST-KEYWORD,outlook,proxy
+# > HOST-KEYWORD,outlook,proxy
 HOST-KEYWORD,sharepoint,proxy
 HOST-KEYWORD,skydrive,proxy
 HOST-KEYWORD,skype,proxy
