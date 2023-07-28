@@ -16,7 +16,9 @@ host-keyword,mail.me.com,direct
 host-keyword,hotmail.com,direct
 host-keyword,live.com,direct
 host-keyword,outlook.com,direct
-
+# 银行
+HOST-SUFFIX,95599.cn,direct
+HOST-SUFFIX,abchina.com,direct
 
 # > 新版抖音本地分流
 host-suffix, snssdk.com,direct
