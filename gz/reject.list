@@ -13,6 +13,9 @@
 
 
 # > 屏蔽苹果系统更新
+host, ns.itunes.apple.com, reject
+host, appldnld.apple.com, reject
+
 HOST, mesu.apple.com,reject
 HOST, xp.apple.com,reject
 HOST, gdmf.apple.com,reject
@@ -23,6 +26,7 @@ HOST, ocsp.apple.com, reject
 
 # >Safari 访问防跳转 App
 HOST, app-site-association.cdn-apple.com, reject
+
 # > 爱奇艺
 host, cr-status.iqiyi.com, reject
 host-suffix, cupid.iqiyi.com, reject
