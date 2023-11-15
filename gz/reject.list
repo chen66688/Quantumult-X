@@ -1,4 +1,4 @@
-﻿################################################################
+################################################################
 # 分流作用：去广告，修正某些自用分流
 
 # 更新时间：2023.02.25
@@ -675,3 +675,7 @@ HOST-SUFFIX,zoomanalytics.co, reject
 HOST-SUFFIX,ads.linkedin.com, reject
 HOST,analytics.slashdotmedia.com, reject
 HOST,zgsdk.zhugeio.com, reject
+
+# > 其它
+HOST-SUFFIX, jads.co, REJECT
+HOST-SUFFIX, juicyads.com, REJECT
