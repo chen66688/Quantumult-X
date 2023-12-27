@@ -271,20 +271,6 @@ HOST,ggv.cmvideo.cn, reject
 HOST,ggx.cmvideo.cn, reject
 HOST,ggx03.miguvideo.com, reject
 
-# > QQ音乐广告
-HOST,tmeadcomm.y.qq.com, reject
-HOST,ad.tencentmusic.com, reject
-HOST,adstats.tencentmusic.com, reject
-HOST,tmead.y.qq.com, reject
-HOST-SUFFIX,rqd.qq.com, reject
-HOST-SUFFIX,wup.imtt.qq.com, reject
-HOST-SUFFIX,gdt.qq.com, reject
-HOST-SUFFIX,android.rqd.qq.com, reject
-HOST-SUFFIX,e.qq.com, reject
-HOST-SUFFIX,beacon.qq.com, reject
-HOST-SUFFIX,v.gdt.qq.com, reject
-
-
 # > 搜狐
 HOST-SUFFIX,ad.sohu.com, reject
 HOST-SUFFIX,ads.sohu.com, reject
