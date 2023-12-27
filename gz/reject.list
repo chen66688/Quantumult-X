@@ -1,7 +1,7 @@
 ################################################################
 # 分流作用：去广告，修正某些自用分流
 
-# 更新时间：2023.02.25
+# 更新时间：2023.12.27
 # 策略选择：拒绝 reject
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -262,35 +262,6 @@ HOST-SUFFIX, shouji.sougou.com, reject
 HOST, u51.me, reject
 HOST-SUFFIX, u51.me, reject
 
-# > 今日头条
-host, dm.toutiao.com, reject
-host-keyword, ad.toutiao.com, reject
-host-keyword, clk.gentags.net, reject
-host-keyword, dm.toutiao.com, reject
-host-keyword, dm.pstatp.com, reject
-host-keyword, dm.bytedance.com, reject
-host-keyword, uop.umeng.com, reject
-host-keyword, policy.jd.com, reject
-host-keyword, kepler.jd.com, reject
-host-keyword, bdsp.x.jd.com, reject
-host-keyword, keplerapi.jd.com, reject
-host-keyword, m.suning.com, reject
-host-keyword, adshare.toutiao.com, reject
-host-keyword, tunion-api.m.taobao.com, reject
-host-keyword, mapi.m.jd.com, reject
-host-keyword, s1.pstatp.com, reject
-host-keyword, s2.pstatp.com, reject
-host-keyword, s3.pstatp.com, reject
-host-keyword, a3.pstatp.com, reject
-host-keyword, a3.bytecdn.cn, reject
-# host-keyword, ichannel.snssdk.com, reject
-HOST-SUFFIX,pangolin-sdk-toutiao.com, reject
-HOST-SUFFIX,pangolin-sdk-toutiao-b.com, reject
-HOST-SUFFIX,api-access.pangolin-sdk-toutiao-b.com, reject
-HOST,ad.toutiao.com, reject
-HOST,dsp.toutiao.com, reject
-host-keyword,pangolin.snssdk.com, reject
-
 # > 咪咕视频
 HOST-SUFFIX,ad.cmvideo.cn, reject
 HOST,ggc.cmvideo.cn, reject
@@ -299,12 +270,6 @@ HOST,ggmk.miguvideo.com, reject
 HOST,ggv.cmvideo.cn, reject
 HOST,ggx.cmvideo.cn, reject
 HOST,ggx03.miguvideo.com, reject
-
-# > 湖南卫视
-HOST-SUFFIX,da.mgtv.com, reject
-HOST-SUFFIX,da.hunantv.com, reject
-HOST-SUFFIX,log.hunantv.com, reject
-HOST-SUFFIX,v2.hunantv.com, reject
 
 # > QQ音乐广告
 HOST,tmeadcomm.y.qq.com, reject
@@ -319,15 +284,6 @@ HOST-SUFFIX,e.qq.com, reject
 HOST-SUFFIX,beacon.qq.com, reject
 HOST-SUFFIX,v.gdt.qq.com, reject
 
-# > 蜻蜓FM
-HOST,ad.qingting.fm, reject
-HOST,adlaunch.qingting.fm, reject
-HOST,ad-cdn.qingting.fm, reject
-
-# > 虎扑
-HOST,adx.hupu.com, reject
-HOST,adx-api.hupu.com, reject
-HOST,goblin.hupu.com, reject
 
 # > 搜狐
 HOST-SUFFIX,ad.sohu.com, reject
@@ -390,10 +346,6 @@ HOST,kgmobilestatbak.kugou.com, reject
 HOST,mobilelog.kugou.com, reject
 HOST,mobilead.kuwo.cn, reject
 HOST,rich.kuwo.cn, reject
-
-# > 同花顺
-HOST,adm.10jqka.com.cn, reject
-HOST,stat.10jqka.com.cn, reject
 
 # > 迅雷
 HOST,adsp.xunlei.com, reject
@@ -489,36 +441,6 @@ HOST-SUFFIX,ads2.msn.com, reject
 HOST-SUFFIX,bingads.microsoft.com, reject
 HOST-SUFFIX,rads.msn.com, reject
 HOST,mobileads.msn.com, reject
-
-# > 威锋
-host-keyword, p3-be-pack-sign.pglstatp-toutiao.com, reject
-host-keyword, sf3-be-pack.pglstatp-toutiao.com, reject
-host-keyword,sf1-be-pack.pglstatp-toutiao.com, reject
-host-keyword,sf1-fe-tos.pglstatp-toutiao.com, reject
-host-keyword,sf1-ttcdn-tos.pstatp.com, reject
-host-keyword,sf3-fe-tos.pglstatp-toutiao.com, reject
-host-keyword,sf3-ttcdn-tos.pstatp.com, reject
-host-keyword,sf6-fe-tos.pglstatp-toutiao.com, reject
-host-keyword,s3-fe-scm.pglstatp-toutiao.com, reject
-host-keyword,sf6-be-pack.pglstatp-toutiao.com, reject
-host-keyword,p9-be-pack-sign.pglstatp-toutiao.com, reject
-
-# > 喜马拉雅
-HOST,adbehavior.ximalaya.com, reject
-HOST,adwbs.ximalaya.com, reject
-HOST-SUFFIX,ad.test.ximalaya.com, reject
-HOST-SUFFIX,adse.test.ximalaya.com, reject
-HOST-SUFFIX,adweb.test.ximalaya.com, reject
-HOST-SUFFIX,adweb.ximalaya.com, reject
-HOST-SUFFIX,linkeye.ximalaya.com, reject
-HOST-SUFFIX,location.ximalaya.com, reject
-HOST-SUFFIX,xdcs-collector.ximalaya.com, reject
-HOST-SUFFIX,ad.ximalaya.com, reject
-HOST-SUFFIX,adse.ximalaya.com, reject
-HOST-SUFFIX,adse.wsa.ximalaya.com, reject
-HOST-SUFFIX,adbehavior.wsa.ximalaya.com, reject
-HOST-SUFFIX,adsebs.ximalaya.com, reject
-HOST-SUFFIX,adbs.ximalaya.com, reject
 
 # > 小红书
 HOST,ads-img-qc.xhscdn.com, reject
