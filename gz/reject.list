@@ -21,6 +21,15 @@ HOST, xp.apple.com,reject
 HOST, gdmf.apple.com,reject
 HOST, iphone-ld.apple.com,reject
 
+# 芒果🥭app去启动页
+host, mobile.da.mgtv.com, reject
+host, platconf.api.mgtv.com, reject
+host, pdata.log.mgtv.com, reject
+host, ys.da.mgtv.com, reject
+host, dflow.log.hunantv.com, reject
+host, apm.log.mgtv.com, reject
+host, rprain.bz.mgtv.com, reject
+
 # >绕过企业证书过期
 HOST, ocsp.apple.com, reject
 
