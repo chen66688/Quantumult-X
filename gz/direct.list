@@ -12,10 +12,10 @@
 #############################################
 
 # > hotmail 邮箱分流
-host, *.icloud.com, direct
-host, *.hotmail.com, direct
-host-keyword,mail.me.com,direct
-host-keyword,live.com,direct
+host-wildcard, *.icloud.com, direct
+host-wildcard, *.hotmail.com, direct
+host-wildcard,mail.me.com,direct
+host-wildcard,live.com,direct
 # 银行
 HOST-SUFFIX,95599.cn,direct
 HOST-SUFFIX,abchina.com,direct
