@@ -29,7 +29,8 @@ host,mgw.alipay.com,direct
 
 # >阿里云盘 
 host-wildcard,*.vryunpan.cc,direct
-
+# >小米刷步
+host,bs.svv.ink,direct
 # > QQ空间
 host-keyword, ctc.qzs.qzone.qq.com, direct
 
