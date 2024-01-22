@@ -260,8 +260,7 @@ HOST-KEYWORD,bing,proxy
 # > HOST-KEYWORD,hotmail,proxy
 HOST-KEYWORD,internetexplorer,proxy
 HOST-KEYWORD,joinms,proxy
-# > hotmail
-# HOST-KEYWORD,live,proxy
+
 HOST-KEYWORD,microsoft,proxy
 HOST-KEYWORD,microsoft-online,proxy
 HOST-KEYWORD,microsofthouse,proxy
@@ -281,8 +280,7 @@ HOST-KEYWORD,msnewskids,proxy
 HOST-KEYWORD,office,proxy
 HOST-KEYWORD,onedrive,proxy
 HOST-KEYWORD,onenote,proxy
-# > outlook
-# HOST-KEYWORD,outlook,proxy
+
 HOST-KEYWORD,sharepoint,proxy
 HOST-KEYWORD,skydrive,proxy
 HOST-KEYWORD,skype,proxy
