@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些网站需要代理才能打开
 
-# 更新时间：2023.07.26
+# 更新时间：2024.01.22
 # 策略选择：代理 proty
 
 # > 其它
@@ -42,14 +42,6 @@ HOST-SUFFIX,phprcdn.com,proxy
 HOST-SUFFIX,pornhub.com,proxy
 HOST-SUFFIX,pornhubpremium.com,proxy
 
-
-# > Steam
-HOST-SUFFIX,fanatical.com,proxy
-HOST-SUFFIX,humblebundle.com,proxy
-HOST-SUFFIX,steamcommunity.com,proxy
-HOST-SUFFIX,steampowered.com,proxy
-HOST-SUFFIX,steamstatic.com,proxy
-
 # > TikTok
 USER-AGENT,TikTok*,proxy
 HOST-SUFFIX,muscdn.com,proxy
@@ -74,12 +66,6 @@ HOST-SUFFIX,popkontv.com,proxy
 HOST-SUFFIX,m1.mudvod.tv,proxy
 HOST-SUFFIX,api.mudvod.tv,proxy
 HOST-SUFFIX,plausible.io,proxy
-IP-CIDR,172.67.5.189/22,proxy
-IP-CIDR,104.22.3.179/22,proxy
-IP-CIDR,104.22.2.179/22,proxy
-IP-CIDR,91.108.56.123/22,proxy
-IP-CIDR,101.32.104.41/22,proxy
-IP-CIDR,104.21.18.63/22,proxy
 HOST-SUFFIX,newpppp.com,proxy
 HOST-SUFFIX,mudvod.tv,proxy
 HOST-SUFFIX,biggggg.com,proxy
@@ -87,44 +73,7 @@ HOST-SUFFIX,telghub.com,proxy
 HOST-SUFFIX,nivod.tv,proxy
 HOST-SUFFIX,m1.nivod.tv,proxy
 HOST-SUFFIX,xunlangbot.com,proxy
-HOST-SUFFIX,bet365.com,proxy
-IP-CIDR,5.226.179.10/22,proxy
 
- 
-#Discord
-HOST-SUFFIX,discord.co,proxy
-HOST-SUFFIX,discord.com,proxy
-HOST-SUFFIX,discord.gg,proxy
-HOST-SUFFIX,discord.gift,proxy
-HOST-SUFFIX,discord.gifts,proxy
-HOST-SUFFIX,discord.media,proxy
-HOST-SUFFIX,discord.new,proxy
-HOST-SUFFIX,discordapp.com,proxy
-HOST-SUFFIX,discordapp.net,proxy
-HOST-SUFFIX,discordapp.page.link,proxy
-
-# > Spotify
-HOST-SUFFIX,audio-ak-spotify-com.akamaized.net,proxy
-HOST-SUFFIX,byspotify.com,proxy
-HOST-SUFFIX,heads4-ak-spotify-com.akamaized.net,proxy
-HOST-SUFFIX,pscdn.co,proxy
-HOST-SUFFIX,scdn.co,proxy
-HOST-SUFFIX,spoti.fi,proxy
-HOST-SUFFIX,spotify-com.akamaized.net,proxy
-HOST-SUFFIX,spotify-everywhere.com,proxy
-HOST-SUFFIX,spotify.com,proxy
-HOST-SUFFIX,spotify.design,proxy
-HOST-SUFFIX,spotifycdn.com,proxy
-HOST-SUFFIX,spotifycdn.net,proxy
-HOST-SUFFIX,spotifycharts.com,proxy
-HOST-SUFFIX,spotifycodes.com,proxy
-HOST-SUFFIX,spotifyforbrands.com,proxy
-HOST-SUFFIX,spotifyjobs.com,proxy
-HOST-KEYWORD,-spotify-com,proxy
-HOST-KEYWORD,spotify.com,proxy
-USER-AGENT,*Spotify*,proxy
-USER-AGENT,Spotify*,proxy
-IP-CIDR,35.186.224.47/32,proxy
 
 # > YouTube 
 USER-AGENT,*youtube*,proxy
@@ -200,23 +149,7 @@ HOST-SUFFIX,gmail.com,proxy
 HOST-SUFFIX,heroku.com,proxy
 HOST-SUFFIX,pubnub.com,proxy
 
-# > Amazon
-IP-CIDR,13.32.0.0/16,proxy
-IP-CIDR,13.33.0.0/16,proxy
-IP-CIDR,13.35.0.0/17,proxy
-IP-CIDR,18.184.0.0/15,proxy
-IP-CIDR,18.194.0.0/15,proxy
-IP-CIDR,18.208.0.0/13,proxy
-IP-CIDR,18.232.0.0/14,proxy
-IP-CIDR,52.200.0.0/13,proxy
-IP-CIDR,52.58.0.0/15,proxy
-IP-CIDR,52.74.0.0/16,proxy
-IP-CIDR,52.77.0.0/16,proxy
-IP-CIDR,52.84.0.0/15,proxy
-IP-CIDR,54.156.0.0/14,proxy
-IP-CIDR,54.226.0.0/15,proxy
-IP-CIDR,54.230.156.0/22,proxy
-IP-CIDR,54.93.0.0/16,proxy
+
 
 # > Facebook
 IP-CIDR,103.4.96.0/22,proxy
@@ -238,18 +171,6 @@ IP-CIDR,74.119.76.0/22,proxy
 # > Google
 IP-CIDR,173.194.0.0/16,proxy
 IP-CIDR,74.125.0.0/16,proxy
-
-# > Potato Chat
-IP-CIDR,13.251.24.157/24,proxy
-IP-CIDR,13.251.41.203/24,proxy
-IP-CIDR,17.252.156.147/24,proxy
-IP-CIDR,17.252.157.26/24,proxy
-
-# > SoftLayer
-IP-CIDR,74.86.0.0/16,proxy
-IP-CIDR,75.126.0.0/16,proxy
-IP-CIDR,174.37.0.0/16,proxy
-IP-CIDR,208.43.0.0/16,proxy
 
 # > Others
 
@@ -278,21 +199,6 @@ HOST-KEYWORD,nicegram,proxy
 HOST-KEYWORD,telegram,proxy
 
 
-#clubhouse
-HOST,clubhouse.pubnub.com,proxy
-HOST,clubhouseprod.s3.amazonaws.com,proxy
-HOST-SUFFIX,clubhouseapi.com,proxy
-HOST-KEYWORD,xbox,proxy
-HOST-KEYWORD,xbox360,proxy
-HOST-KEYWORD,xboxlive,proxy
-HOST-KEYWORD,xboxone,proxy
-USER-AGENT,Microsoft*,proxy
-USER-AGENT,OneDrive*,proxy
-USER-AGENT,OneDriveiOSApp*,proxy
-HOST-SUFFIX,comments.app,proxy
-HOST-SUFFIX,graph.org,proxy
-HOST-SUFFIX,stel.com,proxy
-
 HOST-SUFFIX,netflix.com,proxy
 HOST-SUFFIX,netflix.net,proxy
 USER-AGENT,TVB*,proxy
@@ -304,6 +210,5 @@ USER-AGENT,mytv*,proxy
 # > 其它修正
 host,yazhouse8.com,proxy
 host,audio.yazhouseba.co,proxy
-host,gateway.icloud.com,proxy
 host,is.gd,proxy
 host,gh.sxbai.com,proxy
