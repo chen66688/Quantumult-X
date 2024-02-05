@@ -231,9 +231,17 @@ HOST-SUFFIX,deliver.ifeng.com, reject
 HOST,api.newad.ifeng.com, reject
 HOST,ifengad.3g.ifeng.com, reject
 
-# > 谷歌
+# > 福利网站去广告
+host, www.govchengdu.cn, reject
+host, aig.aigzg.com, reject
+host, pv.dakawm.cc, reject
+host, www.govxian.cn, reject
+
+# > 网络播放去广告
 host,googleads.g.doubleclick.net, reject
 host,googleads.g.doubleclick-cn.net, reject
+
+# > 谷歌
 HOST-SUFFIX,google-analytics.com, reject
 HOST,safebrowsing.googleapis.com, reject
 HOST-SUFFIX,doubleclick.net, reject
