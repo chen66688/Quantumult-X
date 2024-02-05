@@ -232,8 +232,8 @@ HOST,api.newad.ifeng.com, reject
 HOST,ifengad.3g.ifeng.com, reject
 
 # > 谷歌
-host, googleads.g.doubleclick.net, reject
-host, googleads.g.doubleclick-cn.net, reject
+host,googleads.g.doubleclick.net, reject
+host,googleads.g.doubleclick-cn.net, reject
 HOST-SUFFIX,google-analytics.com, reject
 HOST,safebrowsing.googleapis.com, reject
 HOST-SUFFIX,doubleclick.net, reject
