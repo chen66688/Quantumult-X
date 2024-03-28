@@ -8,7 +8,7 @@
 host,hutool.ml,proty
 host,bit.ly,proty
 host,surge.ga,proxy
-host,sspanel.link/#/index,proxy
+host-wildcard,sspanel.link*,proxy
 
 # > 泥视频 +  
 
