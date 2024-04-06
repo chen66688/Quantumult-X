@@ -5,6 +5,7 @@
 # 策略选择：代理 proty
 
 # > 其它
+host,haijiao.com,proty
 host,hutool.ml,proty
 host,bit.ly,proty
 host,surge.ga,proxy
