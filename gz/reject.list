@@ -20,7 +20,7 @@ HOST, mesu.apple.com,reject
 HOST, xp.apple.com,reject
 HOST, gdmf.apple.com,reject
 HOST, iphone-ld.apple.com,reject
-
+HOST, updates-http.cdn-apple.com,reject
 # 芒果🥭app去启动页
 host, mobile.da.mgtv.com, reject
 host, platconf.api.mgtv.com, reject
