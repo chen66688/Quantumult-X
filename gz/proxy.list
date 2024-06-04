@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些网站需要代理才能打开
 
-# 更新时间：2024.04.21
+# 更新时间：2024.06.04
 # 策略选择：代理 proty
 
 # > 其它修正
@@ -139,6 +139,20 @@ HOST-SUFFIX,xunlangbot.com,proxy
 
 
 # > YouTube 
+user-agent, com.google.ios.youtube*, proxy
+user-agent, YouTube*, proxy
+host-suffix, googlevideo.com, proxy
+host-suffix, withyoutube.com, proxy
+host-suffix, youtu.be, proxy
+host-suffix, youtube.com, proxy
+host-suffix, youtubeeducation.com, proxy
+host-suffix, youtubegaming.com, proxy
+host-suffix, youtubekids.com, proxy
+host-suffix, youtube-nocookie.com, proxy
+host-suffix, yt.be, proxy
+host-suffix, ytimg.com, proxy
+host, youtubei.googleapis.com, proxy
+host, yt3.ggpht.com, proxy
 USER-AGENT,*youtube*,proxy
 USER-AGENT,YouTube*,proxy
 HOST-KEYWORD,youtube,proxy
