@@ -11,6 +11,10 @@
 # > "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
 #############################################
 
+
+# > 国网脚本分流
+DOMAIN-KEYWORD, yuheng, DIRECT
+DOMAIN-KEYWORD, yqc-premium, DIRECT
 # > hotmail 邮箱分流
 host, *.microsoftonline.com, direct
 host-wildcard, *.icloud.com, direct
