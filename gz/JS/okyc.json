@@ -4,15 +4,15 @@
 "sites": [
 
 
-{"key":"drpy_js_腾云驾雾","name":"腾  讯 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/腾云驾雾.js"},
-{"key":"drpy_js_奇珍异兽","name":"爱奇艺 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/奇珍异兽.js"},
-{"key":"drpy_js_百忙无果","name":"芒果TV [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/百忙无果.js"},
-{"key":"drpy_js_菜狗","name":"搜  狗 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/菜狗.js"},
-{"key":"drpy_js_优酷","name":"优  酷 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/优酷.js"},
-{"key":"cntv","name":"央视[cat]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/cntv_open.js"},
+{"key":"drpy_js_腾云驾雾","name":"腾  讯 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/腾云驾雾.js"},
+{"key":"drpy_js_奇珍异兽","name":"爱奇艺 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/奇珍异兽.js"},
+{"key":"drpy_js_百忙无果","name":"芒果TV [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/百忙无果.js"},
+{"key":"drpy_js_菜狗","name":"搜  狗 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/菜狗.js"},
+{"key":"drpy_js_优酷","name":"优  酷 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/优酷.js"},
+{"key":"cntv","name":"央视[cat]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/cntv_open.js"},
 {"key":"百度","name":"百 度","type": 1,"api":"https://api.apibdzy.com/api.php/provide/vod/","searchable": 1,"filterable": 0,"categories": ["大陆剧","动作片","喜剧片","爱情片","剧情片","战争片","恐怖片","国产动漫","日韩动漫","欧美剧","韩剧","日剧","科幻片"]},
 {"key":"xinlangapi","name":"新  浪 (官源SP)","type": 1,"api":"https://api.xinlangapi.com/xinlangapi.php/provide/vod/","searchable": 1,"quickSearch": 1,"filterable": 0,"categories": ["综艺","动漫","动作","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","大陆剧","港澳剧","韩剧","动漫电影","欧美剧"],"jar":"https://ghproxy.com/https://github.com/chen66688/TVBox-zyjk/blob/main/jar/ts1019.jar;md5;695C8E045A1DE669DBB104678CA87773"},
-{"key":"drpy_js_360影视","name":"360影视 [DRPY]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/360影视.js"},
+{"key":"drpy_js_360影视","name":"360影视 [DRPY]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/360影视.js"},
 {"key":"量子","name":"量子","type":"0","api":"https://cj.lziapi.com/api.php/provide/vod/at/xml/","searchable":"1","changeable":"1","categories":["台湾剧","动作片","喜剧片","爱情片","国产剧","大陆综艺","港台综艺","恐怖片","剧情片","战争片","香港剧","记录片","电影片","连续剧","综艺片","韩国剧","日本剧","动漫片","国产动漫","日韩动漫","科幻片","欧美剧","海外剧","泰国剧","日韩综艺","欧美综艺","欧美动漫","港台动漫","海外动漫","体育","足球","篮球","网球","斯诺克"]},
 {
 "key": "天天",
@@ -50,12 +50,12 @@
  "timeout": 25
   },
   
-{"key":"drpy_js_我的哔哩","name":"我的哔哩[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/json/我的哔哩.js"},
-{"key":"drpy_js_ikanbot3","name":"聚搜 | 爱看机器人3[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/ikanbot3.js"},
+{"key":"drpy_js_我的哔哩","name":"我的哔哩[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/json/我的哔哩.js"},
+{"key":"drpy_js_ikanbot3","name":"聚搜 | 爱看机器人3[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/ikanbot3.js"},
 
-{"key":"drpy_js_4KHDR[磁]","name":"磁力 | 4KHDR[磁][js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/4KHDR[磁].js"},
-{"key":"drpy_js_磁力熊[磁]","name":"磁力 | 磁力熊[磁][js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/磁力熊[磁].js"},
-{"key":"drpy_js_6V新版[磁]","name":"磁力 | 6V新版[磁][js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/js/6V新版[磁].js"},
+{"key":"drpy_js_4KHDR[磁]","name":"磁力 | 4KHDR[磁][js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/4KHDR[磁].js"},
+{"key":"drpy_js_磁力熊[磁]","name":"磁力 | 磁力熊[磁][js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/磁力熊[磁].js"},
+{"key":"drpy_js_6V新版[磁]","name":"磁力 | 6V新版[磁][js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/6V新版[磁].js"},
 {
 "key": "PanSearch",
 "name": "🙀盘Se┃搜索",
@@ -169,8 +169,8 @@
 "lives": [
 
 
-{"name": "本地直","type": 0,"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/tv/live.txt"},
-{"name": "fanmingming","type": 0,"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gzJS/tv/fm.txt"},
+{"name": "本地直","type": 0,"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/tv/live.txt"},
+{"name": "fanmingming","type": 0,"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/tv/fm.txt"},
 {"name": "live.ipv6.m3u","type": 0,"url": "https://live.fanmingming.com/tv/m3u/ipv6.m3u","playerType": 1,"ua": "okhttp/3.15","epg": "http://epg.112114.xyz/?ch={name}&date={date}","logo": "https://epg.112114.xyz/logo/{name}.png"},
 {
 "name": "live.ipv6",
