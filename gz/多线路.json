@@ -1,4 +1,5 @@
-﻿[{'name': '应用多多家庭版', 'url': 'http://yydsys.top/duo'},
+﻿{
+    "urls": [{'name': '应用多多家庭版', 'url': 'http://yydsys.top/duo'},
 {'name': '应用多多备用', 'url': 'https://cloud.lxweb.cn/f/MoJNuG/xm.json'},
 {'name': '阿里精品专线', 'url': 'http://yydsys.top/duo/ali'},
 {'name': '饭太硬线路', 'url': 'http://饭太硬.top/tv'},
@@ -58,4 +59,4 @@
   'url': 'https://jihulab.com/duomv/apps/-/raw/main/fast.json'},
 {'name': '欧歌', 'url': 'http://tv.nxog.top/api.php?mz=xb&id=1&b=欧歌'},
 {'name': '云星日记', 'url': 'http://jk.itvbox.cc:66/可视TV/云星日记/仓库/api.json'},
-{'name': '吾爱多仓', 'url': 'http://52bsj.vip:98/wuaihouse'}]
+{'name': '吾爱多仓', 'url': 'http://52bsj.vip:98/wuaihouse'}]}
