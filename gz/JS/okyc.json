@@ -203,7 +203,7 @@
 
 
 {"key":"cntv","name":"央视[cat]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/cntv_open.js"},
-{"key":"drpy_js_我的哔哩","name":"我的哔哩[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/api/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/我的哔哩.js"},
+{"key":"drpy_js_我的哔哩","name":"我的哔哩[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/api/drpy2.min.js","jar": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/fan.jar","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/我的哔哩.js"},
 {"key":"drpy_js_360影视","name":"360影视 [DRPY]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/api/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/360影视.js"},
 {
 "key": "csp_LocalFile",
