@@ -1,8 +1,27 @@
 {
-"spider":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/jar/ok.jar;md5;3c88fdce072a186d611b5440afbcea75",
+"spider":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/jar/fan1.jar;md5;d8f21fa84abb5ff61d7f1a0b7a78ec26",
 
 "sites": [
 
+{
+"key": "drpy_js_豆瓣",
+"name": "豆 瓣[jar]",
+"type": 3,
+"api": "clan://JS/api/drpy2.min.js","jar": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/jar/pg.jar","ext": "clan://JS/js/drpy.js"
+},
+
+{
+"key": "csp_JianPian",
+"name": "🔨荐 片",
+"type": 3,
+"api": "csp_JianPian",
+"playerType": 1,
+"searchable": 1,
+"quickSearch": 1,
+"filterable": 1,
+"ext": "http://112.124.0.131:20000"
+},
+ 
 
 {"key":"drpy_js_腾云驾雾","name":"腾  讯 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/腾云驾雾.js"},
 {"key":"drpy_js_奇珍异兽","name":"爱奇艺 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/奇珍异兽.js"},
@@ -11,7 +30,6 @@
 {"key":"drpy_js_优酷","name":"优  酷 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/优酷.js"},
 {"key":"cntv","name":"央视[cat]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/cntv_open.js"},
 {"key":"百度","name":"百 度","type": 1,"api":"https://api.apibdzy.com/api.php/provide/vod/","searchable": 1,"filterable": 0,"categories": ["大陆剧","动作片","喜剧片","爱情片","剧情片","战争片","恐怖片","国产动漫","日韩动漫","欧美剧","韩剧","日剧","科幻片"]},
-{"key":"xinlangapi","name":"新  浪 (官源SP)","type": 1,"api":"https://api.xinlangapi.com/xinlangapi.php/provide/vod/","searchable": 1,"quickSearch": 1,"filterable": 0,"categories": ["综艺","动漫","动作","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","大陆剧","港澳剧","韩剧","动漫电影","欧美剧"],"jar":"https://ghproxy.com/https://github.com/chen66688/TVBox-zyjk/blob/main/jar/ts1019.jar;md5;695C8E045A1DE669DBB104678CA87773"},
 {"key":"drpy_js_360影视","name":"360影视 [DRPY]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/360影视.js"},
 {"key":"量子","name":"量子","type":"0","api":"https://cj.lziapi.com/api.php/provide/vod/at/xml/","searchable":"1","changeable":"1","categories":["台湾剧","动作片","喜剧片","爱情片","国产剧","大陆综艺","港台综艺","恐怖片","剧情片","战争片","香港剧","记录片","电影片","连续剧","综艺片","韩国剧","日本剧","动漫片","国产动漫","日韩动漫","科幻片","欧美剧","海外剧","泰国剧","日韩综艺","欧美综艺","欧美动漫","港台动漫","海外动漫","体育","足球","篮球","网球","斯诺克"]},
 {
@@ -49,7 +67,21 @@
  "changeable": 1,
  "timeout": 25
   },
-  
+ {
+"key":"bili",
+"name":"B站 | Bili[jar]",
+"type":3,
+"api": "csp_Bili",
+"jar": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/jar/pg.jar","searchable": 1,
+"quickSearch": 0,
+"changeable": 0,
+"ext":{
+"type":"演唱会#电影#电视剧#帕梅拉#广场舞#纪录片#综艺#鬼畜#音乐#舞蹈#影视#知识#美食#风光#田园#户外#8K#徐云",
+"cookie":""
+}
+},
+
+ 
 {"key":"drpy_js_我的哔哩","name":"我的哔哩[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/json/我的哔哩.js"},
 {"key":"drpy_js_ikanbot3","name":"聚搜 | 爱看机器人3[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/ikanbot3.js"},
 
