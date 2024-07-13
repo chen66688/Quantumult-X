@@ -3,26 +3,8 @@
 
 "sites": [
 
-{
-"key": "drpy_js_豆瓣",
-"name": "豆 瓣[jar]",
-"type": 3,
-"api": "clan://JS/api/drpy2.min.js","jar": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/jar/pg1.jar","ext": "clan://JS/js/drpy.js"
-},
-
-{
-"key": "csp_JianPian",
-"name": "🔨荐 片",
-"type": 3,
-"api": "csp_JianPian",
-"playerType": 1,
-"searchable": 1,
-"quickSearch": 1,
-"filterable": 1,
-"ext": "http://112.124.0.131:20000"
-},
- 
-
+{"key": "drpy_js_豆瓣","name": "豆 瓣[jar]","type": 3,"api": "clan://JS/api/drpy2.min.js","jar": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/jar/pg1.jar","ext": "clan://JS/js/drpy.js"},
+{"key": "賤賤","name": "🔨荐 片","type": 3,"api": "csp_Jianpian","jar": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/jar/pg1.jar","searchable": 1,"changeable": 1,"ext": "./lib/jianpian.json$$$1","timeout":60},
 {"key":"drpy_js_腾云驾雾","name":"腾  讯 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/腾云驾雾.js"},
 {"key":"drpy_js_奇珍异兽","name":"爱奇艺 [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/奇珍异兽.js"},
 {"key":"drpy_js_百忙无果","name":"芒果TV [js]","type": 3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/百忙无果.js"},
@@ -32,31 +14,8 @@
 {"key":"百度","name":"百 度","type": 1,"api":"https://api.apibdzy.com/api.php/provide/vod/","searchable": 1,"filterable": 0,"categories": ["大陆剧","动作片","喜剧片","爱情片","剧情片","战争片","恐怖片","国产动漫","日韩动漫","欧美剧","韩剧","日剧","科幻片"]},
 {"key":"drpy_js_360影视","name":"360影视 [DRPY]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/360影视.js"},
 {"key":"量子","name":"量子","type":"0","api":"https://cj.lziapi.com/api.php/provide/vod/at/xml/","searchable":"1","changeable":"1","categories":["台湾剧","动作片","喜剧片","爱情片","国产剧","大陆综艺","港台综艺","恐怖片","剧情片","战争片","香港剧","记录片","电影片","连续剧","综艺片","韩国剧","日本剧","动漫片","国产动漫","日韩动漫","科幻片","欧美剧","海外剧","泰国剧","日韩综艺","欧美综艺","欧美动漫","港台动漫","海外动漫","体育","足球","篮球","网球","斯诺克"]},
-{
-"key": "天天",
- "name": "⛅️天天┃直连",
- "type": 3,
- "api": "csp_TianTian",
- "searchable": 1,
- "quickSearch": 1,
- "filterable": 1,
- "timeout": 10
-  },
-  
-{
-"key": "无忧短剧",
- "name": "🌈无忧┃短剧",
- "type": 3,
- "api": "csp_Duanj",
- "searchable": 1,
- "changeable": 0,
- "style": {
- "type": "rect",
- "ratio": 1.433
- },
- "timeout": 10
-  },
-  
+{"key": "天天","name": "⛅️天天┃直连","type": 3,"api": "csp_TianTian","searchable": 1,"quickSearch": 1,"filterable": 1,"timeout": 10},
+{"key": "无忧短剧","name": "🌈无忧┃短剧","type": 3,"api": "csp_Duanj","searchable": 1,"changeable": 0,"style": {"type": "rect","ratio": 1.433},"timeout": 10},
 {
 "key": "sp360",
  "name": "🐛360┃解析",
@@ -84,7 +43,6 @@
  
 {"key":"drpy_js_我的哔哩","name":"我的哔哩[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/json/我的哔哩.js"},
 {"key":"drpy_js_ikanbot3","name":"聚搜 | 爱看机器人3[js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/ikanbot3.js"},
-
 {"key":"drpy_js_4KHDR[磁]","name":"磁力 | 4KHDR[磁][js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/4KHDR[磁].js"},
 {"key":"drpy_js_磁力熊[磁]","name":"磁力 | 磁力熊[磁][js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/磁力熊[磁].js"},
 {"key":"drpy_js_6V新版[磁]","name":"磁力 | 6V新版[磁][js]","type":3,"api":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/lib/drpy2.min.js","ext":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/chen66688/Quantumult-X/master/gz/JS/js/6V新版[磁].js"},
@@ -111,6 +69,8 @@
 
 
 /*----------------------- 采集资源配置地址----------------------- -->
+{"key": "PTT","name": "ptt","type": 3,"api": "csp_PTT","jar": "clan://JS/fm.jar","searchable": 1,"changeable": 1},
+{"key": "drpy_js","name": "xvideos","type": 3,"api": "clan://JS/lib/drpy2.min.js","ext": "clan://JS/js/XVIDEOS.js","playerType": "1","searchable": 0,"quickSearch": 0,"changeable": 1,"style": {"type": "rect","ratio": 1.485}},
 {
 "key": "ms4nii",
 "name": "美少女资源(已修复)",
