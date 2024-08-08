@@ -1,10 +1,11 @@
 ﻿################################################################
 # 分流作用：修正某些网站需要代理才能打开
 
-# 更新时间：2024.06.04
+# 更新时间：2024.08.09
 # 策略选择：代理 proty
 
 # > 其它修正
+host, sliverkiss.free.hr, proxy
 host, ikuuu.pw, proxy
 host,haijiao.com,proty
 host,hutool.ml,proty
