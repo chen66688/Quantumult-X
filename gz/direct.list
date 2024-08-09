@@ -62,6 +62,9 @@ host-wildcard,*.ysp.cctv.cn, direct
 host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
+
+host, mirror.ghproxy.com, direct
+host, fastly.jsdelivr.net, direct
 host, gsp64-ssl.ls.apple.com, direct
 host-suffix,lacal,direct
 host,sub.danhu.ml,direct
