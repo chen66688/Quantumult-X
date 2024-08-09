@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些被分流到外面的国内网站
 
-# 更新时间：2024.08.01
+# 更新时间：2024.08.09
 # 策略选择：直连 direct
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -66,7 +66,8 @@ host-suffix,lacal,direct
 host,sub.danhu.ml,direct
 host-suffix,javfc2.xyz,direct
 host-keyword, anti-ad.net, direct
-
+user-agent, mirror.ghproxy.com/*, direct
+host, login.microsoftonline.com, direct
 host, ad.12306.cn, direct
 
 # > 微信分流
