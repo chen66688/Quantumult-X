@@ -15,6 +15,10 @@ host-wildcard,sspanel.link*,proxy
 host, yfamily.vercel.app, proxy
 host, freewechat.com, proxy
 
+# > 牛牛视频 
+host,nnsp.xyz,proty
+host,netflav.com,proxy
+
 
 # > 泥视频 +  
 
