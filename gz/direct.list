@@ -72,50 +72,6 @@ host-keyword, anti-ad.net, direct
 host, login.microsoftonline.com, direct
 host, ad.12306.cn, direct
 
-# > 微信分流
-HOST,apd-pcdnwxlogin.teg.tencent-cloud.net,direct
-HOST,btrace.qq.com,direct
-HOST,dl.wechat.com,direct
-HOST,dldir1.qq.com,direct
-HOST,sgfindershort.wechat.com,direct
-HOST,sgilinkshort.wechat.com,direct
-HOST,sglong.wechat.com,direct
-HOST,sgminorshort.wechat.com,direct
-HOST,sgquic.wechat.com,direct
-HOST,sgshort.wechat.com,direct
-HOST,slife.xy-asia.com,direct
-HOST,soup.v.qq.com,direct
-HOST,tencentmap.wechat.com,direct
-HOST,vweixinf.tc.qq.com,direct
-HOST,weixin110.qq.com,direct
-HOST,wup.imtt.qq.com,direct
-HOST,wx.tenpay.com,direct
-HOST,wxapp.tc.qq.com,direct
-HOST-SUFFIX,iot-tencent.com,direct
-HOST-SUFFIX,lbs.gtimg.com,direct
-HOST-SUFFIX,map.qq.com,direct
-HOST-SUFFIX,qlogo.cn,direct
-HOST-SUFFIX,qpic.cn,direct
-HOST-SUFFIX,servicewechat.com,direct
-HOST-SUFFIX,tenpay.com,direct
-HOST-SUFFIX,up-hl.3g.qq.com,direct
-HOST-SUFFIX,vweixinthumb.tc.qq.com,direct
-HOST-SUFFIX,wechat.com,direct
-HOST-SUFFIX,wechatlegal.net,direct
-HOST-SUFFIX,wechatos.net,direct
-HOST-SUFFIX,wechatpay.com,direct
-HOST-SUFFIX,weixin.com,direct
-HOST-SUFFIX,weixin.qq.com,direct
-HOST-SUFFIX,weixinbridge.com,direct
-HOST-SUFFIX,weixinsxy.com,direct
-HOST-SUFFIX,wx.gtimg.com,direct
-HOST-SUFFIX,wx.qq.com,direct
-HOST-SUFFIX,wxapp.tc.qq.com,direct
-HOST-SUFFIX,wxs.qq.com,direct
-HOST-SUFFIX,yun-hl.3g.qq.com,direct
-USER-AGENT,MicroMessenger*,direct
-USER-AGENT,WeChat*,direct
-IP-ASN,132203,direct
 
 
 
