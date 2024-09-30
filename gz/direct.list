@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些被分流到外面的国内网站
 
-# 更新时间：2024.08.09
+# 更新时间：2024.10.01
 # 策略选择：直连 direct
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -62,6 +62,8 @@ host-wildcard,*.ysp.cctv.cn, direct
 host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
+
+host, kuxingtianxia.us.kg, direct
 host, mirror.ghproxy.com, direct
 host, fastly.jsdelivr.net, direct
 host, gsp64-ssl.ls.apple.com, direct
