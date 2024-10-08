@@ -1,11 +1,13 @@
 ﻿################################################################
 # 分流作用：修正某些网站需要代理才能打开
 
-# 更新时间：2024.10.08
+# 更新时间：2024.10.09
 # 策略选择：代理 proty
 
 # > 其它修正
 
+host, 457c987c.kuxingtianxia.pages.dev, proxy
+host, flynb.site, proxy
 host,cloudflare.com, proxy
 host,kuxingtianxia.pages.dev, proxy
 host,kuxingtianxia.us.kg, proxy
