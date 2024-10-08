@@ -1,19 +1,23 @@
 ﻿################################################################
 # 分流作用：修正某些网站需要代理才能打开
 
-# 更新时间：2024.08.15
+# 更新时间：2024.10.08
 # 策略选择：代理 proty
 
 # > 其它修正
-host, sliverkiss.free.hr, proxy
-host, ikuuu.pw, proxy
+
+host,cloudflare.com, proxy
+host,kuxingtianxia.pages.dev, proxy
+host,kuxingtianxia.us.kg, proxy
+host,sliverkiss.free.hr, proxy
+host,ikuuu.pw, proxy
 host,haijiao.com,proty
 host,hutool.ml,proty
 host,bit.ly,proty
 host,surge.ga,proxy
 host-wildcard,sspanel.link*,proxy
-host, yfamily.vercel.app, proxy
-host, freewechat.com, proxy
+host,yfamily.vercel.app, proxy
+host,freewechat.com, proxy
 
 # > 牛牛视频 
 host,nnsp.xyz,proty
