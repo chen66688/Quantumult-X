@@ -9,6 +9,7 @@
 host,cloudflare.com, proxy
 host,kuxingtianxia.pages.dev, proxy
 host,kuxingtianxia.us.kg, proxy
+host, dash.infinityfree.com, proxy
 host,sliverkiss.free.hr, proxy
 host,ikuuu.pw, proxy
 host,haijiao.com,proty
