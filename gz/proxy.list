@@ -7,7 +7,6 @@
 # > 其它修正
 
 host, 457c987c.kuxingtianxia.pages.dev, proxy
-host, flynb.site, proxy
 host,cloudflare.com, proxy
 host,kuxingtianxia.pages.dev, proxy
 host,kuxingtianxia.us.kg, proxy
