@@ -62,7 +62,7 @@ host-wildcard,*.ysp.cctv.cn, direct
 host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
-
+host, flynb.site, direct
 host, kuxingtianxia.us.kg, direct
 host, mirror.ghproxy.com, direct
 host, fastly.jsdelivr.net, direct
