@@ -63,7 +63,7 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
 
-host,tang.hz.cz/js/ethtv.js，direct
+host-wildcard, tang.hz.cz/*，direct
 host-wildcard, *.chen168.us.kg, direct
 host, flynb.site, direct
 host, kuxingtianxia.us.kg, direct
