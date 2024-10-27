@@ -78,6 +78,9 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
 
+host, geolocation.onetrust.com, direct
+host-wildcard, *.cloudflareinsights.com, direct
+host-wildcard, *.cloudflare.com, direct
 host-wildcard, *.chen168.us.kg, direct
 host, flynb.site, direct
 host, kuxingtianxia.us.kg, direct
