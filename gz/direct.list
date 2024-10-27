@@ -13,43 +13,56 @@
 
 
 # > 国网脚本分流
+
 DOMAIN-KEYWORD, yuheng, DIRECT
 DOMAIN-KEYWORD, yqc-premium, DIRECT
+
 # > hotmail 邮箱分流
+
 host, *.microsoftonline.com, direct
 host-wildcard, *.icloud.com, direct
 host-wildcard, *.hotmail.com, direct
 host-wildcard,*.mail.me.com,direct
 host-wildcard,*.live.com,direct
+
 # 银行
+
 HOST-SUFFIX,95599.cn,direct
 HOST-SUFFIX,abchina.com,direct
 HOST-SUFFIX,ccb.com,direct
 HOST-SUFFIX,cib.com.cn,direct
 
 # > 新版抖音本地分流
+
 host-suffix, snssdk.com,direct
 host-suffix,amemv.com,direct
 
 # >支付宝
+
 host,mgw.alipay.com,direct
 
 # >阿里云盘 
+
 host-wildcard,*.vryunpan.cc,direct
+
 # >小米刷步
+
 host,bs.svv.ink,direct
+
 # > QQ空间
+
 host-keyword, ctc.qzs.qzone.qq.com, direct
 
 # > 路由器后台
+
 ip-cidr, 192.168.0.1/24, direct
 
 # > 移动网关
+
 ip-cidr, 192.168.1.1/24, direct
 ip-cidr, 192.168.2.1/24, direct
 ip-cidr, 192.168.3.1/24, direct
 ip-cidr, 192.168.5.1/24, direct
-
 ip-cidr, 192.168.0.0/16, direct
 ip-cidr, 10.0.0.0/8, direct
 ip-cidr, 172.16.0.0/12, direct
@@ -57,7 +70,9 @@ ip-cidr, 127.0.0.0/8, direct
 ip-cidr, 100.64.0.0/10, direct
 ip-cidr, 224.0.0.0/4, direct
 ip6-cidr, fe80::/10, direct
+
 # > 央视频
+
 host-wildcard,*.ysp.cctv.cn, direct
 host,outlivecloud-cdn.ysp.cctv.cn, direct
 
