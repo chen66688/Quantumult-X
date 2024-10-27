@@ -77,7 +77,8 @@ host-wildcard,*.ysp.cctv.cn, direct
 host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
-host-wildcard, api.paoyun.eu.org, direct
+
+host, api.paoyun.eu.org, direct
 host, aktv.top, direct
 host, v2h.jdshipin.com, direct
 host, geolocation.onetrust.com, direct
