@@ -78,6 +78,7 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
 
+host, assets.heimuer.tv, direct
 host, api.paoyun.eu.org, direct
 host, aktv.top, direct
 host, v2h.jdshipin.com, direct
