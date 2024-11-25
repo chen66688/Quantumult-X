@@ -10,7 +10,21 @@
 # > "reject-dict"   策略返回 HTTP 状态码 200,同时附带一个空的 JSON 对象
 # > "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
 #############################################
-
+# talkatone
+DOMAIN-SUFFIX,inner-active.mobi,DIRECT
+DOMAIN-SUFFIX,mobilefuse.com,DIRECT
+DOMAIN-SUFFIX,inmobi.com,DIRECT
+DOMAIN-SUFFIX,crashlytics.com,DIRECT
+DOMAIN-SUFFIX,talkatone.com,DIRECT
+DOMAIN-SUFFIX,kochava.com,DIRECT
+DOMAIN-SUFFIX,cohere.com,DIRECT
+DOMAIN-SUFFIX,ip-api.com,DIRECT
+DOMAIN-SUFFIX,agkn.com,DIRECT
+DOMAIN-SUFFIX,tktn.at,DIRECT
+IP-CIDR,50.117.27.0/24,DIRECT
+IP-CIDR,69.46.75.0/24,DIRECT
+IP-CIDR,205.164.56.0/24,DIRECT
+IP-CIDR,63.251.124.0/24,DIRECT
 
 # > 国网脚本分流
 
