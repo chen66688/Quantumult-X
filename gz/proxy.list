@@ -5,7 +5,7 @@
 # 策略选择：代理 proty
 
 # talkatone
-host,tktn.be,proxy
+host, tktn.be, proxy
 # > 其它修正
 host-wildcard, *.chen168.workers.dev, proxy
 host, 457c987c.kuxingtianxia.pages.dev, proxy
