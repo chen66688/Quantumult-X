@@ -1,9 +1,11 @@
 ﻿################################################################
 # 分流作用：修正某些网站需要代理才能打开
 
-# 更新时间：2024.10.09
+# 更新时间：2024.10.25
 # 策略选择：代理 proty
 
+# talkatone
+host,tktn.be,proxy
 # > 其它修正
 host-wildcard, *.chen168.workers.dev, proxy
 host, 457c987c.kuxingtianxia.pages.dev, proxy
