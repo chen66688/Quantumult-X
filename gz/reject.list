@@ -1,7 +1,7 @@
 ################################################################
 # 分流作用：去广告，修正某些自用分流
 
-# 更新时间：2024.08.20
+# 更新时间：2024.11.25
 # 策略选择：拒绝 reject
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -11,6 +11,17 @@
 # > "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
 #############################################
 
+# talkatone
+host,ads.inmobi.com,reject
+host,tappx.com,reject
+host,criteo.com,reject
+host,pubmatic.com,reject
+host,smaato.net,reject
+host,amazon-adsystem.com,reject
+host,googleads.g.doubleclick.net,reject
+host,adsappier.com,reject
+host,appier.net,reject
+host,appiersig.com,reject
 
 # > 屏蔽苹果系统更新
 host, ns.itunes.apple.com, reject
