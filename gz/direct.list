@@ -11,25 +11,25 @@
 # > "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
 #############################################
 # talkatone
-DOMAIN-SUFFIX,inner-active.mobi,DIRECT
-DOMAIN-SUFFIX,mobilefuse.com,DIRECT
-DOMAIN-SUFFIX,inmobi.com,DIRECT
-DOMAIN-SUFFIX,crashlytics.com,DIRECT
-DOMAIN-SUFFIX,talkatone.com,DIRECT
-DOMAIN-SUFFIX,kochava.com,DIRECT
-DOMAIN-SUFFIX,cohere.com,DIRECT
-DOMAIN-SUFFIX,ip-api.com,DIRECT
-DOMAIN-SUFFIX,agkn.com,DIRECT
-DOMAIN-SUFFIX,tktn.at,DIRECT
-IP-CIDR,50.117.27.0/24,DIRECT
-IP-CIDR,69.46.75.0/24,DIRECT
-IP-CIDR,205.164.56.0/24,DIRECT
-IP-CIDR,63.251.124.0/24,DIRECT
+host,inner-active.mobi,direct
+host,mobilefuse.com,direct
+host,inmobi.com,direct
+host,crashlytics.com,direct
+host,talkatone.com,direct
+host,kochava.com,direct
+host,cohere.com,direct
+host,ip-api.com,direct
+host,agkn.com,direct
+host,tktn.at,direct
+ip-cidr,50.117.27.0/24,direct
+ip-cidr,69.46.75.0/24,direct
+ip-cidr,205.164.56.0/24,direct
+ip-cidr,63.251.124.0/24,direct
 
 # > 国网脚本分流
 
-DOMAIN-KEYWORD, yuheng, DIRECT
-DOMAIN-KEYWORD, yqc-premium, DIRECT
+DOMAIN-KEYWORD, yuheng, direct
+DOMAIN-KEYWORD, yqc-premium, direct
 
 # > hotmail 邮箱分流
 
