@@ -1,7 +1,7 @@
 ################################################################
 # 分流作用：去广告，修正某些自用分流
 
-# 更新时间：2024.11.25
+# 更新时间：2024.11.30
 # 策略选择：拒绝 reject
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -600,5 +600,6 @@ HOST,analytics.slashdotmedia.com, reject
 HOST,zgsdk.zhugeio.com, reject
 
 # > 其它
+IP-CIDR,95.161.76.100/31,REJECT
 HOST-SUFFIX, jads.co, REJECT
 HOST-SUFFIX, juicyads.com, REJECT
