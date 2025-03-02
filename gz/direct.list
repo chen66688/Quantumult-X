@@ -92,6 +92,8 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
 
+host, apis.bilin.eu.org, direct
+host, appstore.bilin.eu.org, direct
 host-wildcard, *.chen168.ggff.net, direct
 host-wildcard, *.us.kg, direct
 host-wildcard, *.us.kg, direct
