@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些被分流到外面的国内网站
 
-# 更新时间：2025.01.16
+# 更新时间：2025.03.16
 # 策略选择：直连 direct
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -94,7 +94,6 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 host, apis.bilin.eu.org, direct
 host, appstore.bilin.eu.org, direct
-host-wildcard, *.chen168.ggff.net, direct
 host-wildcard, *.us.kg, direct
 host-wildcard, *.us.kg, direct
 host, assets.heimuer.tv, direct
