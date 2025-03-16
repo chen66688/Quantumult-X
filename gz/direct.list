@@ -92,7 +92,7 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
 
-host-wildcard, *.serv00.net.ip-ddns.com, direct
+host-wildcard, *.serv00.net, direct
 host-wildcard, *.kuxingtianxia.ip-ddns.com, direct
 host, apis.bilin.eu.org, direct
 host, appstore.bilin.eu.org, direct
