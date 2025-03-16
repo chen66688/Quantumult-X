@@ -91,7 +91,7 @@ host-wildcard,*.ysp.cctv.cn, direct
 host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
-
+host-wildcard, *.kuxingtianxia.ip-ddns.com, proxy
 host, apis.bilin.eu.org, direct
 host, appstore.bilin.eu.org, direct
 host-wildcard, *.us.kg, direct
