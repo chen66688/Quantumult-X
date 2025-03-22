@@ -10,7 +10,7 @@
 # > "reject-dict"   策略返回 HTTP 状态码 200,同时附带一个空的 JSON 对象
 # > "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
 #############################################
-
+host, github.com，direct
 # > 苹果推送服务
 host-keyword, push.apple.com, direct
 # > 苹果时间同步
