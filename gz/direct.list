@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些被分流到外面的国内网站
 
-# 更新时间：2025.03.19
+# 更新时间：2025.03.22
 # 策略选择：直连 direct
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -10,6 +10,37 @@
 # > "reject-dict"   策略返回 HTTP 状态码 200,同时附带一个空的 JSON 对象
 # > "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
 #############################################
+
+# > 苹果推送服务
+host-keyword, push.apple.com, direct
+# > 苹果时间同步
+host, time.apple.com, direct
+# > 苹果天气服务
+host-keyword, weather-edge.apple.com, direct
+host-keyword, weather-adge.apple.com, direct
+host-suffix, weather-data.apple.com, direct
+host-suffix, weather-map.apple.com, direct
+host-suffix, weather-analytics-events.apple.com, direct
+# > 苹果内购服务
+host-keyword, buy.itunes.apple.com, direct
+# > 苹果icloud
+host-keyword, icloud.com, direct
+# > 苹果输入法相关服务
+host-keyword, api.smoot.apple.com, direct
+host-keyword, api.smoot.apple.cn, direct
+# > 苹果iMessage服务
+host, init.ess.apple.com, direct
+# > 苹果其他服务
+host-keyword, ssl.apple.com, direct
+host-keyword, humb.apple.com, direct
+host, smp-device-content.apple.com, direct
+host-keyword, api-adservices.apple.com, direct
+host-keyword, ls.apple.com, direct
+host-keyword, gsa.apple.com, direct
+host-keyword, ess.apple.com, direct
+# > 苹果app store
+host, itunes.apple.com, direct
+
 # talkatone
 host,inner-active.mobi,direct
 host,mobilefuse.com,direct
