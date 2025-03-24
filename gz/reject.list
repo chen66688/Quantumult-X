@@ -72,6 +72,9 @@ IP-CIDR, 124.192.153.42/32, reject
 
 
 # > 百度
+
+host, afd.baidu.com, reject
+host, mobads.baidu.com, reject
 HOST-SUFFIX,duapps.com, reject
 HOST-SUFFIX,cpro.baidu.com, reject
 HOST-SUFFIX,pos.baidu.com, reject
