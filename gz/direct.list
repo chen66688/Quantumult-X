@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些被分流到外面的国内网站
 
-# 更新时间：2025.03.22
+# 更新时间：2025.03.25
 # 策略选择：直连 direct
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -63,7 +63,7 @@ DOMAIN-KEYWORD, yuheng, direct
 DOMAIN-KEYWORD, yqc-premium, direct
 
 # > hotmail 邮箱分流
-
+host-wildcard, *.microsoft.com, direct
 host, *.microsoftonline.com, direct
 host-wildcard, *.icloud.com, direct
 host-wildcard, *.hotmail.com, direct
@@ -123,7 +123,8 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
 
-# host-wildcard, *.750319.xyz, direct
+
+host-wildcard, *.750319.xyz, direct
 host-wildcard, *.serv00.net, direct
 host-wildcard, *.kuxingtianxia.ip-ddns.com, direct
 host, apis.bilin.eu.org, direct
