@@ -122,10 +122,9 @@ host-wildcard,*.ysp.cctv.cn, direct
 host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
-
+host-wildcard, *.750319.xyz, direct
 host, fastly.jsdelivr.net, direct
 host-wildcard, *.pages.dev, direct
-user-agent, *.750319.xyz, direct
 host-wildcard, *.serv00.net, direct
 host-wildcard, *.kuxingtianxia.ip-ddns.com, direct
 host, apis.bilin.eu.org, direct
