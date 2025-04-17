@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些网站需要代理才能打开
 
-# 更新时间：2025.03.25
+# 更新时间：2025.04.18
 # 策略选择：代理 proty
 
 # talkatone
@@ -66,6 +66,7 @@ HOST-SUFFIX,pornhub.com,proxy
 HOST-SUFFIX,pornhubpremium.com,proxy
 
 # > TikTok by 可莉
+host-keyword, *.tiktokv.com, proxy
 HOST-SUFFIX, bytedapm.com, proxy
 HOST-SUFFIX, bytefcdn-oversea.com, proxy
 HOST-SUFFIX, bytefcdn-ttpeu.com, proxy
