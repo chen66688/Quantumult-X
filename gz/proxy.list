@@ -270,7 +270,7 @@ USER-AGENT,encoreTVB*,proxy
 USER-AGENT,mytv*,proxy
 
 # > 其它修正
-host-wildcard, *.750319.xyz, proxy
+
 host,yazhouse8.com,proxy
 host,audio.yazhouseba.co,proxy
 host,is.gd,proxy
