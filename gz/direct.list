@@ -1,7 +1,7 @@
 ﻿################################################################
 # 分流作用：修正某些被分流到外面的国内网站
 
-# 更新时间：2025.04.18
+# 更新时间：2025.04.26
 # 策略选择：直连 direct
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -124,7 +124,6 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 # > 其他分流修正
 
 host-wildcard, *.run.claw.cloud, direct
-host-wildcard, *.750319.xyz, direct
 host, fastly.jsdelivr.net, direct
 host-wildcard, *.pages.dev, direct
 host-wildcard, *.serv00.net, direct
