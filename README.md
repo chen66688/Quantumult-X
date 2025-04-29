@@ -1,4 +1,4 @@
-＃来自网络
+＃
 
 Working Copy使用方法：
 
@@ -10,7 +10,7 @@ Working Copy使用方法：
 
  MitM = education.github.com
 
- 作者 @ImSingee，请勿外传
+
  */
 
  $done({body: '{"student": true}'}) 
