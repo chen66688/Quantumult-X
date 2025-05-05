@@ -7,6 +7,7 @@
 # talkatone
 host, tktn.be, proxy
 # > 其它修正
+host-wildcard, *.750319.xyz, proxy
 host, kuxingge.serv00.net, proxy
 host-wildcard, *.chen168.ggff.net, proxy
 host-wildcard, *.chen168.workers.dev, proxy
