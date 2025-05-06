@@ -1,35 +1,15 @@
 ﻿################################################################
 # 分流作用：修正某些网站需要代理才能打开
 
-# 更新时间：2025.04.26
+# 更新时间：2025.05.6
 # 策略选择：代理 proty
 
-# talkatone
+# > talkatone
 host, tktn.be, proxy
-# > 其它修正
-host-wildcard, *.750319.xyz, proxy
-host, kuxingge.serv00.net, proxy
-host-wildcard, *.chen168.ggff.net, proxy
-host-wildcard, *.chen168.workers.dev, proxy
-host, 457c987c.kuxingtianxia.pages.dev, proxy
-host,cloudflare.com, proxy
-host,kuxingtianxia.pages.dev, proxy
-host,kuxingtianxia.us.kg, proxy
-host, dash.infinityfree.com, proxy
-host,sliverkiss.free.hr, proxy
-host,ikuuu.pw, proxy
-host,haijiao.com,proty
-host,hutool.ml,proty
-host,bit.ly,proty
-host,surge.ga,proxy
-host-wildcard,sspanel.link*,proxy
-host,yfamily.vercel.app, proxy
-host,freewechat.com, proxy
 
 # > 牛牛视频 
 host,nnsp.xyz,proty
 host,netflav.com,proxy
-
 
 # > 泥视频 +  
 
@@ -56,7 +36,6 @@ host,netflav.com,proxy
 
 # > Google Voice
 HOST,voice.telephony.goog,proxy
-
 
 # > Pornhub
 HOST-SUFFIX,phncdn.com,proxy
@@ -157,7 +136,6 @@ HOST-SUFFIX,nivod.tv,proxy
 HOST-SUFFIX,m1.nivod.tv,proxy
 HOST-SUFFIX,xunlangbot.com,proxy
 
-
 # > YouTube 
 user-agent, com.google.ios.youtube*, proxy
 user-agent, YouTube*, proxy
@@ -237,7 +215,6 @@ HOST-SUFFIX,chromeexperiments.com,proxy
 HOST-SUFFIX,heroku.com,proxy
 HOST-SUFFIX,pubnub.com,proxy
 
-
 # > Others
 
 HOST-SUFFIX,易付通.cn,proxy
@@ -269,9 +246,24 @@ USER-AGENT,TVer-Release*,proxy
 USER-AGENT,TaiwanGood*,proxy
 USER-AGENT,encoreTVB*,proxy
 USER-AGENT,mytv*,proxy
-
 # > 其它修正
-
+host, kuxingge.serv00.net, proxy
+host-wildcard, *.chen168.ggff.net, proxy
+host-wildcard, *.chen168.workers.dev, proxy
+host, 457c987c.kuxingtianxia.pages.dev, proxy
+host,cloudflare.com, proxy
+host,kuxingtianxia.pages.dev, proxy
+host,kuxingtianxia.us.kg, proxy
+host, dash.infinityfree.com, proxy
+host,sliverkiss.free.hr, proxy
+host,ikuuu.pw, proxy
+host,haijiao.com,proty
+host,hutool.ml,proty
+host,bit.ly,proty
+host,surge.ga,proxy
+host-wildcard,sspanel.link*,proxy
+host,yfamily.vercel.app, proxy
+host,freewechat.com, proxy
 host,yazhouse8.com,proxy
 host,audio.yazhouseba.co,proxy
 host,is.gd,proxy
