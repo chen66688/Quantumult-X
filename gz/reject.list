@@ -34,8 +34,6 @@ HOST, iphone-ld.apple.com,reject
 HOST, updates-http.cdn-apple.com,reject
 
 # 微信小程序去广告
-#易捷加油小程序 #底部横幅广告  #主机名ocrifs.ejoy.sinopec.com
-https:\/\/ocrifs\.ejoy\.sinopec\.com\/advertitfs\/advert\/findAdvertInfo reject-dict
 host, wxsnsdy.wxs.qq.com, REJECT
 host, wxsmsdy.video.qq.com, REJECT
 host, wxsnsdythumb.wxs.qq.com, REJECT
