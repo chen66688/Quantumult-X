@@ -1,7 +1,7 @@
 ################################################################
 # 分流作用：去广告，修正某些自用分流
 
-# 更新时间：2025.06.02
+# 更新时间：2025.06.05
 # 策略选择：拒绝 reject
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -34,6 +34,9 @@ HOST, iphone-ld.apple.com,reject
 HOST, updates-http.cdn-apple.com,reject
 
 # 微信小程序去广告
+host,wxa.wxs.qq.com,REJECT
+host,wximg.wxs.qq.com,REJECT
+host,wxsmw.wxs.qq.com,REJECT
 host, wxsnsdy.wxs.qq.com, REJECT
 host, wxsmsdy.video.qq.com, REJECT
 host, wxsnsdythumb.wxs.qq.com, REJECT
