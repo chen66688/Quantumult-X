@@ -123,10 +123,7 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
 host-wildcard, *.750319.xyz, direct
-host, web.750319.xyz, direct
-host, zd.750319.xyz, direct
-host, cf.750319.xyz, direct
-host, cm.750319.xyz, direct
+host, kkb.9901158.xyz, direct
 host, yg.vless.750319.xyz, direct
 host, privacy.aiuys.com, direct
 host-wildcard, *.run.claw.cloud, direct
