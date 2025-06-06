@@ -1,7 +1,7 @@
 ################################################################
 # 分流作用：去广告，修正某些自用分流
 
-# 更新时间：2025.06.05
+# 更新时间：2025.06.07
 # 策略选择：拒绝 reject
 
 # > "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -40,6 +40,11 @@ host,wxsmw.wxs.qq.com,REJECT
 host, wxsnsdy.wxs.qq.com, REJECT
 host, wxsmsdy.video.qq.com, REJECT
 host, wxsnsdythumb.wxs.qq.com, REJECT
+
+# 微信禁止热更新
+host,dl.wechat.com, reject
+host,dldir1.qq.com, reject
+host,dldir1v6.qq.com, reject
 
 # 芒果🥭app去启动页
 host, mobile.da.mgtv.com, reject
