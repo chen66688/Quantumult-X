@@ -293,6 +293,12 @@ HOST-SUFFIX,afd.l.google.com, reject
 HOST-SUFFIX,www.googleadservices.com, reject
 HOST-SUFFIX,www.google-analytics.com, reject
 HOST,ads.youtube.com, reject
+host,googlesyndication.com,reject
+host,googleadservices.com,reject
+host,doubleclick.net,reject
+host,ads.youtube.com,reject
+host,admob.com,reject
+
 # > 高德
 HOST-SUFFIX,adiu.amap.com,REJECT
 HOST,aboard.apilocate.amap.com,REJECT
