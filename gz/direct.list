@@ -124,7 +124,7 @@ host,outlivecloud-cdn.ysp.cctv.cn, direct
 # > 其他分流修正
 host-wildcard, *.750319.xyz, direct
 host, kkb.9901158.xyz, direct
-host, yg.vless.750319.xyz, direct
+host-wildcard,*.cloudflare.com, direct
 host, privacy.aiuys.com, direct
 host-wildcard, *.run.claw.cloud, direct
 host, fastly.jsdelivr.net, direct
