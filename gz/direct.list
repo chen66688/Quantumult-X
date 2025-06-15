@@ -71,6 +71,7 @@ host-wildcard,*.mail.me.com,direct
 host-wildcard,*.live.com,direct
 
 # 银行
+HOST,icbc.com.cn,direct
 HOST-SUFFIX,bscabank.com,direct
 HOST-SUFFIX,95599.cn,direct
 HOST-SUFFIX,abchina.com,direct
@@ -122,6 +123,8 @@ host-wildcard,*.ysp.cctv.cn, direct
 host,outlivecloud-cdn.ysp.cctv.cn, direct
 
 # > 其他分流修正
+
+host, havoc.app, direct
 host-wildcard, *.750319.xyz, direct
 host, kkb.9901158.xyz, direct
 host-wildcard,*.cloudflare.com, direct
